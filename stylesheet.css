@@ -1,0 +1,65 @@
+
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200';
+@font-face {
+font-family: 'Avenir Next LT Pro Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Avenir Next LT Pro Bold'), url('AvenirNextLTPro-Bold.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Avenir Next LT Pro Condensed';
+font-style: normal;
+font-weight: normal;
+src: local('Avenir Next LT Pro Condensed'), url('/assets/fonts/avenir-nrxt-lt-pro/AvenirNextLTPro-Cn.woff') format('woff');
+}
+
+.menu {
+    margin-top:10px;
+    font-size:14px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+ td { 
+    font-size:24; 
+    padding: 10px 10px 10px 10px !important;
+}
+
+ul {
+    float:right;
+}
+li {
+
+    display:inline-block;
+    text-decoration:none;
+    font-size:24px; 
+    /*font-weight:200 !important;*/
+    padding: 10px 20px 10px 20px !important;
+}
+
+
+
+h3 {
+    font-family: 'Avenir Next LT Pro Bold';
+    color:white !important;
+}
+
+.data-card {
+    width: 440px;
+    height:326px;
+    margin:10px auto;
+    /*border:black solid 1px;*/
+    overflow:hidden;
+    box-shadow: 2px 2px 15px 0px grey;
+    filter: blur(60px) grayscale(20%);
+}
+
+.data-card > img {
+    width:440px;
+}
+
+.load-more {
+    font-family: 'Montserrat', sans-serif;
+    font-size:14px;
+    margin-bottom:10px;
+}
