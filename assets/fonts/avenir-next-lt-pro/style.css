@@ -60,7 +60,7 @@ src: local('Avenir Next LT Pro Ultra Light Condensed'), url('AvenirNextLTPro-Ult
 font-family: 'Avenir Next LT Pro Bold';
 font-style: normal;
 font-weight: normal;
-src: local('Avenir Next LT Pro Bold'), url('assets/fonts/avenir-next-lt-pro/AvenirNextLTPro-Bold.woff') format('woff');
+src: local('Avenir Next LT Pro Bold'), url('AvenirNextLTPro-Bold.woff') format('woff');
 }
 
 

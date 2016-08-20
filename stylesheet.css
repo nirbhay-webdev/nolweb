@@ -1,5 +1,6 @@
 
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200';
+
 @font-face {
 font-family: 'Avenir Next LT Pro Bold';
 font-style: normal;
@@ -11,56 +12,279 @@ src: local('Avenir Next LT Pro Bold'), url('AvenirNextLTPro-Bold.woff') format('
 font-family: 'Avenir Next LT Pro Condensed';
 font-style: normal;
 font-weight: normal;
-src: local('Avenir Next LT Pro Condensed'), url('/assets/fonts/avenir-nrxt-lt-pro/AvenirNextLTPro-Cn.woff') format('woff');
+src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
 }
 
-.menu {
-    margin-top:10px;
-    font-size:14px;
+.grad {
+    position:absolute;
+    width:380px;
+    height:530px;
+    background:black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(black,rgba(0,0,0,0.4)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black,rgba(0,0,0,0.4)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black,rgba(0,0,0,0.4)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0.4),black); /* Standard syntax */
+    
+}
+
+
+.animated { 
+    animation-duration: 1500ms; 
+    animation-fill-mode: both; 
+    animation-timing-function: ease-in-out; 
+    animation-iteration-count:infinite; 
+} 
+
+@keyframes pulse { 
+    0% { transform: scale(1); outline:hidden } 
+    50% { transform: scale(1.4); outline:hidden} 
+    100% { transform: scale(1); outline:hidden} 
+} 
+.pulse { 
+    animation-name: pulse; 
+}
+
+.dot-outer {
+     animation-name: blinker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blinker {
+    0%  { opacity:1.0 }
+    50% { opacity:0.0 }
+    100%{ opacity:1.0 }
+}
+
+.dot-inner {
+    animation-name: blinker2;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay:300ms
+}
+
+@keyframes blinker2 {
+    0%  { opacity:0.0 }
+    50% { opacity:1.0 }
+    100%{ opacity:0.0 }
+}
+
+
+.body {
+    background:black;
+}
+
+.header {
+    color:white;
+    background:black;
+    padding-left:0px !important;
+    padding-right:0px !important;
+    
+}
+
+.header-title {
+    font-family: 'Avenir Next LT Pro Bold' !important;
+
+    width:221px;
+    height:90px;
+    margin-top:20px;
+    margin-left:27px !important;
+    font-size:64px;
+    padding-left:0px !important;
+    padding-right:0px !important;
+
+}
+
+.header-menu {
+    float:right;
+    width:630px!important;
+    height:30px;
+    margin-top:36px;
+    padding:3px 0px 3px 0px !important;
+    margin-right:27px !important;
+    font-size:24px;
     font-family: 'Source Sans Pro', sans-serif;
+
+
 }
 
- td { 
-    font-size:24; 
+td { 
+    font-size:24px; 
     padding: 10px 10px 10px 10px !important;
 }
+ 
 
 ul {
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px !important;
+    height:24px !important;
     float:right;
 }
 li {
-
     display:inline-block;
     text-decoration:none;
-    font-size:24px; 
-    /*font-weight:200 !important;*/
-    padding: 10px 20px 10px 20px !important;
+    margin-left:30px;
+    height:24px !important;
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+    text-decoration:none;
+    
 }
 
+h1 {
+    font-family: 'Avenir Next LT Pro Bold' !important;
+    font-size:64px !important;
+    margin-bottom:20px !important;
+}
 
 
 h3 {
     font-family: 'Avenir Next LT Pro Bold';
-    font-size:64px;
+    font-size: 24px;
     color:white !important;
 }
 
-.data-card {
-    width: 440px;
-    height:326px;
-    margin:10px auto;
-    /*border:black solid 1px;*/
+h4 {
+    font-family: 'Avenir Next LT Pro Bold' !important;
+    font-size:21px !important;
+    margin-bottom:0px;
+    color:black !important;
+}
+.container-margin {
+    padding-left:0px !important;
+    padding-right:0px !important;
+    background:black;
+}
+
+.test2{
+    padding:14px 13px 14px 13px;
+    margin-left:0px !important;
+    margin-right:0px !important;
+
+    margin-top:5px;
+    
+    /*border:2px black solid;*/
+}
+
+a:link {
+    text-decoration:none !important;
+    color:white !important;
+}
+ a:visited {
+    text-decoration:none !important;
+    color:white !important;
+ }
+
+.mix {
+    min-width:380px !important;
+    height:326px !important;
+    /*border:2px solid red;*/
     overflow:hidden;
-    box-shadow: 2px 2px 15px 0px grey;
-    filter: blur(60px) grayscale(20%);
+    cursor:pointer;
+    
 }
 
-.data-card > img {
+#card-title {
+    font-family: 'Montserrat', sans-serif;
+    margin-left:23px;
+    font-size:24px !important;
+    color:white;
+}
+
+.card {
+    color:white;
+    width:84px;
+    height:58px;
+    padding-top:7px;
+    padding-bottom:7px; 
+    vertical-align:bottom;
+    border-radius:2px;
+}
+
+.bg-img {
+    float:left;
     width:440px;
+    /*margin-left:15px;*/
+    position:absolute;
+    height:251px;
+    overflow:hidden;
 }
 
+.bg-img > img{
+    filter:blur(1px);
+}
+
+
+
+
+
+/*.data-card:hover {
+    background: -webkit-linear-gradient(bottom, black,rgba(0,0,0,0.4));
+    background: -o-linear-gradient(bottom, black,rgba(0,0,0,0.4));
+    background: linear-gradient(to top, black,rgba(0,0,0,0.4));
+}*/
 .load-more {
     font-family: 'Montserrat', sans-serif;
     font-size:14px;
     margin-bottom:10px;
+    padding-left:27px;
 }
+
+.popup-info {
+    position:absolute;
+    top:100px;
+    width:560px;
+    height:830px;
+    display:block;
+    margin-left:calc(50% - 280px);
+    margin-right:auto;
+    background:white;
+    z-index:10000000;
+}
+
+/*Home HTML*/
+
+.home{
+    background:black !important;
+    height:100vh !important;
+
+}
+
+.home h1{
+    color:white !important;
+    font-family: 'Avenir Next LT Pro Bold' !important;
+    font-size:34px !important;
+}
+
+.main-title {
+    margin-top:70px;
+}
+
+.sub-title {
+    margin-top:80px;
+    font-family:'Montserrat', sans-serif;
+}
+
+.caret-btn {
+    margin-top:20px;
+    background:black;
+    display:block;
+    border:none;
+    border-top:solid white 40px;
+    border-left:solid black 34px;
+    border-right:solid black 34px;
+    width:40px;
+    cursor:pointer;
+    background:black;
+    outline:none;
+    box-shadow:none;
+}
+
+
+a:link {
+    text-decoration:none;
+    color:white;
+}
+

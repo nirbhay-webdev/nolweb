@@ -1,0 +1,66 @@
+<div ng-controller ="nolWebController">
+    <div class="popup-info" ng-show="clicked">
+        <div class="row"><div class="col-lg-12">
+           
+                <img style="position:absolute" src="{{val.imgUrl}}" width="560px"/>
+         
+        </div>
+        </div>
+        <div class="row"><div class="col-lg-10"><h4 style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important; margin-left:10px; margin-top:340px;margin-bottom: 200px">{{val.venue}}</h4></div><div class="col-lg-2"><span class="glyphicon glyphicon-remove" style="color:white; font-size:20px; margin-top:20px; cursor:pointer" ng-click="clicked = false"></span></div></div>
+      
+    </div>
+    <div class="container-fluid header">
+            <div class="row">
+             <div class="col-lg-3"><div class="header-title">#NOL</div></div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-7">
+                    <div class="header-menu"> 
+                        <ul style="color:white">
+                                <li><a ng-href="#/venues" style="color:black">Live Data</a></li>
+                                <li><a ng-href="#/app" style="color:black">App</a></li>
+                                <li><a ng-href="#/ambassador" style="color:black">Ambassador</a></li>
+                                <li><a ng-href="#/about-us" style="color:black">About Us</a></li>
+                                <li><a ng-href="#/contact-us" style="color:black"> Contact</a> </li>
+                         
+                        </ul>
+                   
+                   </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5"></div><div class="col-lg-2"> <div class="dot-outer" style="display:inline-block;width:30px; height:30px; border:3px solid white; border-radius:15px;"><div class="dot-inner" style="display:inline-block;width:10px; height:10px; border:5px solid white; border-radius:5px; margin:7px 0px 0px 7px"></div></div><span style="padding-top:5px;display:inlilne-block"><h3 style="display:inline-block;">&nbsp;Right Now</h3></span></div>
+            </div>
+    </div>
+
+
+    <div class="container-fluid container-margin">    
+            <div class="row test2" ng-repeat="arr in data">
+                    <div class="col-lg-4 mix" ng-repeat="x in arr" >
+                        <div style="width:440px;height:326px;margin-left:auto;margin-right:auto;overflow:hidden; border-radius:5px;">
+                                <div class="bg-img" style="border-radius:5px;"><img style="float:left;filter:blur(2px);-webkit-filter:blur(3px);" src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
+                                <div class="row" style="background:rgba(0,0,0,0.5);height:64px;margin-bottom:100px;margin-top:13px;"><div class="col-lg-9" id="card-title" ng-click="showpopup(x)">{{x.venue}}</div><div class="col-lg-2"></div></div>
+                                <div class="row" style="background:rgba(0,0,0,0.5);" ng-click="showpopup(x)">
+                                    <div class="col-xs-3" style="text-align:center"><div class="card" style="background:rgba(28,202,90,0.8);border:1px solid rgba(28,202,90,1); margin-left:20px;">People<br>{{x.people}}</div></div>
+                                    <div class="col-xs-3" style="text-align:center"><div class="card" style="background:rgba(74,144,226,0.8);border:1px solid rgba(74,144,226,1);margin-left:5px">Male<br>{{x.male}}</div></div>
+                                    <div class="col-xs-3" style="text-align:center"><div class="card" style="background:rgba(237,51,123,0.8);border:1px solid rgba(237,51,123,1);margin-left:-5px;">Female<br>{{x.female}}</div></div>
+                                    <div class="col-xs-3" style="text-align:center"><div class="card" style="background:rgba(245,245,245,0.8);border:1px solid rgba(245,245,245,1);margin-left:-15px;">Fullness<br>{{x.fullness}}</div></div>
+                                </div>
+                                <div class="row" style="height:93px;padding-top:34px; background:white;" ng-click="showpopup(x)">
+                                        <div class="col-lg-4" style="text-align:left;padding-left:41px; vertical-align:middle;background:white;" > <span style="font-size:12px; color:rgba(0,0,0,0.7)">VIBE</span><br><img src="assets/images/upbeat.png" width="12px" margin-right="2px"/>{{x.vibe}} </div>
+                                        <div class="col-lg-4" style="text-align:left;padding-left:41px; vertical-align:middle;background:white;" > <span style="font-size:12px; color:rgba(0,0,0,0.7)">MUSIC GENRE</span><br><img src="assets/images/music.png" width="12px" margin-right="2px"/> {{x.genre}}</div>
+                                        <div class="col-lg-4" style="text-align:left;padding-left:41px; vertical-align:middle;background:white;" > <span style="font-size:12px; color:rgba(0,0,0,0.7)">MUSIC TYPE</span><br><img src="assets/images/mic.png" width="12px" margin-right="2px"/>{{x.type}}</div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+
+
+            <div class="row load-more">
+                <div class="col-lg-1">
+                    <button type="button" class="btn btn-default btn-xs" ng-click="loadMore()">
+                        Load more <span class="caret"></span> 
+                    </button>
+                </div>
+     
+     </div>       </div>
+</div>
