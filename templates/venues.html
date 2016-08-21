@@ -11,9 +11,9 @@
     </div>
     <div class="container-fluid header">
             <div class="row">
-             <div class="col-lg-3"><div class="header-title">#NOL</div></div>
+             <div class="col-xs 12 col-lg-3"><div class="header-title" style="text-align:center">#NOL</div></div>
                 <div class="col-lg-2"></div>
-                <div class="col-lg-7">
+                <div class="col-xs-12 col-lg-7">
                     <div class="header-menu"> 
                         <ul style="color:white">
                                 <li><a ng-href="#/venues" style="color:black">Live Data</a></li>
@@ -43,7 +43,7 @@
 
     <div class="container-fluid container-margin">    
             <div class="row test2" ng-repeat="arr in data">
-                    <div class="col-lg-4 mix" ng-repeat="x in arr" >
+                    <div class=" col-xs-12 col-lg-4 mix" ng-repeat="x in arr" >
                         <div style="width:440px;height:326px;margin-left:auto;margin-right:auto;overflow:hidden; border-radius:5px;">
                                 <div class="bg-img" style="border-radius:5px 5px 0px 0px;"><img style="float:left;filter:blur(5px);-webkit-filter:blur(5px);" src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
                                 <div class="row" style="background:rgba(0,0,0,0.5);height:64px;margin-bottom:100px;margin-top:13px;"><div class="col-lg-9" id="card-title" ng-click="showpopup(x)">{{x.venue}}</div><div class="col-lg-2"></div></div>
@@ -64,7 +64,7 @@
 
 
             <div class="row load-more">
-                <div class="col-lg-1">
+                <div class="col-xs-12 col-lg-1">
                     <button type="button" class="btn btn-default btn-xs" ng-click="loadMore()">
                         Load more <span class="caret"></span> 
                     </button>
