@@ -345,7 +345,93 @@ a:link {
 
 
 
-@media only screen and (max-width: 768px) and (max-device-width: 768px) {
+@media only screen and (max-width: 768px) {
+
+.card {
+      width:91.66vw;
+      margin-left:4.16vw;
+      margin-bottom:2.08vw; 
+      margin-top:2.08vw; 
+      height:74.09vw; 
+      background:white;
+      position:relative;
+      float:left;
+      overflow:hidden;
+      cursor:pointer;
+}
+
+.card-title {
+    position:absolute;
+    margin-top:14px;
+    width:inherit;
+    font-family: 'Montserrat', sans-serif;
+    margin-left:23px;
+    font-size:24px !important;
+    color:white;
+    z-index:1000;
+}
+
+.mini-card-box {
+    position:absolute; 
+    width:inherit;
+    height:5.5vw;
+    margin-top:12.33vw;
+    
+}
+
+.mini-cards {
+    position:relative;
+    float:left;
+    display:block;
+    width:5.8vw;
+    height:4.0vw;
+    margin-left:1.533vw;
+    margin-top:0.2vw;
+    margin-right:0vw;
+
+}
+
+.three-text-box {
+    position:absolute;
+    display:block; 
+    width:inherit;
+    height:5.22vw;
+    margin-top:17.49vw;
+}
+
+.text-box {
+    position:relative;
+    float:left;
+    width:10.22vw;
+    height:inherit;
+}
+
+/*.card {
+    color:white;
+    width:84px;
+    height:58px;
+    padding-top:7px;
+    padding-bottom:7px; 
+    vertical-align:bottom;
+    border-radius:2px;
+}*/
+
+.bg-img {
+    float:left;
+    height:17.5vw;
+    /*margin-left:15px;*/
+    position:absolute;
+   
+    overflow:hidden;
+}
+
+.bg-img > img{
+    filter:blur(1px);
+}
+
+}
+
+@media only screen and (max-device-width: 768px) {
 
 .card {
       width:91.66vw;
