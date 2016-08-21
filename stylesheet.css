@@ -14,7 +14,10 @@ font-style: normal;
 font-weight: normal;
 src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
 }
-
+.row {
+    margin-left:0px !important;
+    margin-right:0px !important;
+}
 .grad {
     position:absolute;
     width:380px;
@@ -153,21 +156,14 @@ h4 {
     margin-bottom:0px;
     color:black !important;
 }
+
 .container-margin {
     padding-left:0px !important;
     padding-right:0px !important;
     background:black;
 }
 
-.test2{
-    padding:14px 13px 14px 13px;
-    margin-left:0px !important;
-    margin-right:0px !important;
 
-    margin-top:5px;
-    
-    /*border:2px black solid;*/
-}
 
 a:link {
     text-decoration:none !important;
@@ -178,14 +174,7 @@ a:link {
     color:white !important;
  }
 
-.mix {
-    min-width:380px !important;
-    height:326px !important;
-    /*border:2px solid red;*/
-    overflow:hidden;
-    cursor:pointer;
-    
-}
+
 
 .card {
       width:30.73vw;
@@ -202,11 +191,11 @@ a:link {
 
 .card-title {
     position:absolute;
-    margin-top:14px;
+    margin-top:0.97vw;
     width:inherit;
     font-family: 'Montserrat', sans-serif;
-    margin-left:23px;
-    font-size:24px !important;
+    margin-left:1.6vw;
+    font-size:1.67vw !important;
     color:white;
     z-index:1000;
 }
@@ -388,11 +377,11 @@ a:link {
 
 .card-title {
     position:absolute;
-    margin-top:14px;
+    margin-top:2.91vw;
     width:inherit;
     font-family: 'Montserrat', sans-serif;
-    margin-left:23px;
-    font-size:24px !important;
+    margin-left:4.79vw;
+    font-size:5vw !important;
     color:white;
     z-index:1000;
 }
@@ -487,11 +476,11 @@ a:link {
 
 .card-title {
     position:absolute;
-    margin-top:14px;
+    margin-top:2.91vw;
     width:inherit;
     font-family: 'Montserrat', sans-serif;
-    margin-left:23px;
-    font-size:24px !important;
+    margin-left:4.79vw;
+    font-size:5vw !important;
     color:white;
     z-index:1000;
 }
