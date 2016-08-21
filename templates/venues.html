@@ -2,11 +2,11 @@
     <div class="popup-info" ng-show="clicked">
         <div class="row"><div class="col-lg-12">
            
-                <img style="position:absolute" src="{{val.imgUrl}}" width="560px"/>
+                <img style="position:absolute;margin-left:-15px"  src="{{val.imgUrl}}"  width="560px"/>
          
         </div>
         </div>
-        <div class="row"><div class="col-lg-10"><h4 style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important; margin-left:10px; margin-top:340px;margin-bottom: 200px">{{val.venue}}</h4></div><div class="col-lg-2"><span class="glyphicon glyphicon-remove" style="color:white; font-size:20px; margin-top:20px; cursor:pointer" ng-click="clicked = false"></span></div></div>
+        <div class="row"><div class="col-lg-10"><span style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important;margin-top:340px;margin-bottom: 200px">{{val.venue}}</span></div><div class="col-lg-2"><span class="glyphicon glyphicon-remove" style="color:white; font-size:20px; margin-top:20px; cursor:pointer" ng-click="clicked = false"></span></div></div>
       
     </div>
     <div class="container-fluid header">
@@ -47,7 +47,7 @@
                
                     
                        <div class="card" ng-repeat="x in arr" ng-click="showpopup(x)">
-                                <div class="bg-img"><img src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
+                                <div class="bg-img"><img src="{{x.imgUrl}}" ng-click="showpopup(x)"/><div class="grad"></div></div>
                                 <div class="card-title" >{{x.venue}}</div>
                                 <div class="mini-card-box">
                                     <div class="mini-cards" style="background:rgba(28,202,90,0.8);border:1px solid rgba(28,202,90,1);"> <span class="mini-cards-tag">PEOPLE</span><br><span class="mini-cards-value">{{x.people}}</span></div>

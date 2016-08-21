@@ -18,17 +18,7 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
     margin-left:0px !important;
     margin-right:0px !important;
 }
-.grad {
-    position:absolute;
-    width:380px;
-    height:530px;
-    background:black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(black,rgba(0,0,0,0.4)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(black,rgba(0,0,0,0.4)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(black,rgba(0,0,0,0.4)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(0,0,0,0.4),black); /* Standard syntax */
-    
-}
+
 
 
 .animated { 
@@ -195,7 +185,7 @@ a:link {
     margin-left:1.6vw;
     font-size:1.67vw !important;
     color:white;
-    z-index:1000;
+    z-index:1000000;
 }
 
 .mini-card-box {
@@ -203,6 +193,7 @@ a:link {
     width:inherit;
     height:5.5vw;
     margin-top:12.33vw;
+    z-index:1000000;
     
 }
 
@@ -271,16 +262,35 @@ a:link {
 
 .bg-img {
     float:left;
+    width:inherit;
     height:17.5vw;
     /*margin-left:15px;*/
     position:absolute;
    
     overflow:hidden;
+   
+}
+.bg-img > img {
+    z-index:100;
+    position:absolute;
+    width:inherit;
+}
+.grad {
+    float:left;width:inherit;
+    height:17.5vw;
+    /*margin-left:15px;*/
+    position:absolute;
+   
+    overflow:hidden;
+    background:black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0.4)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0.4)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0.4)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(top,rgba(0,0,0,0.4),rgba(0,0,0,0.8)); /* Standard syntax */
+    z-index:100000;
 }
 
-.bg-img > img{
-    filter:blur(1px);
-}
+
 
 
 
@@ -308,6 +318,7 @@ a:link {
     margin-right:auto;
     background:white;
     z-index:10000000;
+    box-shadow:0px 0px 60px 20px black;
 }
 
 /*Home HTML*/
