@@ -486,6 +486,7 @@ a:link {
 
 @media only screen and (max-device-width: 768px) {
 .header-title{ text-align:center}
+
 .card {
       width:91.66vw;
       margin-left:4.16vw;

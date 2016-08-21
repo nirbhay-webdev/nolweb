@@ -47,7 +47,7 @@
                
                     
                        <div class="card" ng-repeat="x in arr" ng-click="showpopup(x)">
-                                <div class="bg-img" style="border-radius:5px 5px 0px 0px;"><img style="float:left;filter:blur(1px);-webkit-filter:blur(1px);" src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
+                                <div class="bg-img"><img src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
                                 <div class="card-title" >{{x.venue}}</div>
                                 <div class="mini-card-box">
                                     <div class="mini-cards" style="background:rgba(28,202,90,0.8);border:1px solid rgba(28,202,90,1);"> <span class="mini-cards-tag">PEOPLE</span><br><span class="mini-cards-value">{{x.people}}</span></div>
