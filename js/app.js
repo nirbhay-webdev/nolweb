@@ -12,7 +12,9 @@ var app = angular.module('nolWeb',['ngRoute']);
                     templateUrl:'templates/ambassador.html'}
                     ).when('/contact-us',{
                     templateUrl:'templates/contact.html'}
-                    ).otherwise('/');
+                    ).when('/app',{
+                    templateUrl:'templates/app.html'
+                    }).otherwise('/');
 
     }]);
 
