@@ -438,7 +438,7 @@ a:link {
       margin-left:4.16vw;
       margin-bottom:2.08vw; 
       margin-top:2.08vw; 
-      height:74.09vw; 
+      height:67.91vw; 
       background:white;
       position:relative;
       float:left;
@@ -460,8 +460,8 @@ a:link {
 .mini-card-box {
     position:absolute; 
     width:inherit;
-    height:16.45vw;
-    margin-top:36.87vw;
+    height:16.4vw;
+    margin-top:36.25vw;
     
 }
 
@@ -471,24 +471,23 @@ a:link {
     display:block;
     width:17.5vw;
     height:12.08vw;
-    margin-left:5.41vw;
-    margin-top:0.62vw;
+    margin-left:4.33vw;
+    margin-top:0.625vw;
     margin-right:0vw;
 
 }
-
 .three-text-box {
     position:absolute;
     display:block; 
     width:inherit;
-    height:5.22vw;
-    margin-top:17.49vw;
+    height:15.62vw;
+    margin-top:52.29vw;
 }
 
 .text-box {
     position:relative;
     float:left;
-    width:10.22vw;
+    width:30.55vw;
     height:inherit;
 }
 
@@ -504,15 +503,17 @@ a:link {
 
 .bg-img {
     float:left;
-    height:17.5vw;
+    width:91.66vw;
+    height:52.29vw;
     /*margin-left:15px;*/
-    position:absolute;
-   
-    overflow:hidden;
+    position:absolute; 
+    
 }
 
 .bg-img > img{
     filter:blur(1px);
+    width:91.66vw;
 }
+
 
 }
