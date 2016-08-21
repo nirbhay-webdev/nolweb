@@ -42,9 +42,27 @@
 
 
     <div class="container-fluid container-margin">    
-            <div class="row test2" ng-repeat="arr in data">
-                    <div class=" col-xs-12 col-lg-4 mix" ng-repeat="x in arr" >
-                        <div style="width:440px;height:326px;margin-left:auto;margin-right:auto;overflow:hidden; border-radius:5px;">
+        
+            <div class="row" style="margin-left:0px !important;margin-right:0px !important" ng-repeat="arr in data">
+               
+                    
+                       <div class="card" ng-repeat="x in arr" ng-click="showpopup(x)">
+                       <div class="bg-img" style="border-radius:5px 5px 0px 0px;"><img style="float:left;filter:blur(1px);-webkit-filter:blur(1px);" src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
+                       <div class="card-title" >{{x.venue}}</div>
+                       <div class="mini-card-box">
+                                    <div class="mini-cards" style="background:rgba(28,202,90,0.8);border:1px solid rgba(28,202,90,1);"> {{x.people}} </div>
+                                    <div class="mini-cards" style="background:rgba(74,144,226,0.8);border:1px solid rgba(74,144,226,1);"> {{x.male}} </div>
+                                    <div class="mini-cards" style="background:rgba(237,51,123,0.8);border:1px solid rgba(237,51,123,1);"> {{x.female}} </div>
+                                    <div class="mini-cards" style="background:rgba(245,245,245,0.8);border:1px solid rgba(245,245,245,1);"> {{x.fullness}} </div>
+                       </div>
+                       <div class="three-text-box">
+                           <div class="text-box">{{x.vibe}}</div>
+                           <div class="text-box">{{x.genre}}</div>
+                           <div class="text-box">{{x.type}}</div>
+                       </div>
+                       </div>
+                         
+                        <!--<div style="width:440px;height:326px;margin-left:auto;margin-right:auto;overflow:hidden; border-radius:5px;">
                                 <div class="bg-img" style="border-radius:5px 5px 0px 0px;"><img style="float:left;filter:blur(5px);-webkit-filter:blur(5px);" src="{{x.imgUrl}}" ng-click="showpopup(x)"/></div>
                                 <div class="row" style="background:rgba(0,0,0,0.5);height:64px;margin-bottom:100px;margin-top:13px;"><div class="col-lg-9" id="card-title" ng-click="showpopup(x)">{{x.venue}}</div><div class="col-lg-2"></div></div>
                                 <div class="row" style="background:rgba(0,0,0,0.5);" ng-click="showpopup(x)">
@@ -58,8 +76,10 @@
                                         <div class="col-lg-4" style="text-align:left;padding-left:41px; vertical-align:middle;background:white;" > <span style="font-size:12px; color:rgba(0,0,0,0.7)">MUSIC GENRE</span><br><img src="assets/images/music.png" width="12px" margin-right="2px"/> {{x.genre}}</div>
                                         <div class="col-lg-4" style="text-align:left;padding-left:41px; vertical-align:middle;background:white;" > <span style="font-size:12px; color:rgba(0,0,0,0.7)">MUSIC TYPE</span><br><img src="assets/images/mic.png" width="12px" margin-right="2px"/>{{x.type}}</div>
                                 </div>
-                        </div>
-                    </div>
+                        </div>-->
+
+                 
+
             </div>
 
 
