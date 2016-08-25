@@ -1,6 +1,6 @@
-var app = angular.module('nolWeb',['ngRoute']);
+var app = angular.module('nolWeb',['ngRoute','nolWeb-Services']);
 
-    app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
+app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
                 $routeProvider.
                     when('/',{
                     templateUrl:'templates/home.html'
@@ -18,7 +18,16 @@ var app = angular.module('nolWeb',['ngRoute']);
 
     }]);
 
-app.controller('nolWebController',['$scope',function($scope){
+app.controller('nolWebController',['$scope','dataService',function($scope,dataService){
+        $scope.modal_show = false;
+        $scope.init = function() {
+            dataService.getData().then(function(response){console.log(response,'logged')},function(response){})
+        }
+
+        $scope.update = function() {
+
+        }
+
 
         $scope.clicked = false;
         $scope.val = {};
@@ -28,7 +37,7 @@ app.controller('nolWebController',['$scope',function($scope){
             $scope.clicked = true;
         }
 
-        $scope.data = [[{ venue:'Hauz Khas Social',
+        $scope.data = [[{ venue:'Masha',
                          imgUrl:'assets/images/hauz-khas-social.png',
                          people: 100,
                          male:60,
