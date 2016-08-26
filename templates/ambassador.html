@@ -1,45 +1,45 @@
-<div ng-controller="nolWebController" style="height:80vw">
-    <div style="background:rgba(209,231,81,1)!important;position:fixed;display:block;z-index:10000000;width:50%;background:white;height:80vh;margin-top:10vh;margin-left:25%;box-shadow:0px 0px 20px 8px white" ng-show="modal_show"> 
+<div ng-controller="nolAmbassadorController" style="height:80vw">
+    <div style="background:rgba(209,231,81,1)!important;position:fixed;display:block;z-index:10000000;width:50%;background:white;height:80vh;margin-top:10vh;margin-left:25%;box-shadow:0px 0px 20px 8px white" ng-show="modalShow"> 
         <div class="container-fluid">
             <div class="row">
                 <div style="margin-top:10px;margin-right:10px;">
-                <button type="button" class="close" aria-label="Close"><span aria-hidden="true" style="font-size:26px;"ng-click="modal_show = false">&times;</span></button>
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true" style="font-size:26px;" ng-click="modalShow = false">&times;</span></button>
                 </div>
-                <form class="form-horizontal" style="margin-left:15% ;margin-top:20%;color:white!important;">
+                <form class="form-horizontal" style="margin-left:15%; margin-top:20%; color:white!important;">
                     <div class="form-group">
                         <div class="col-sm-5">
                             <label for="contact_no">First Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="John/Jane">
+                        <input type="text" class="form-control" id="first_name" placeholder="John/Jane" ng-model="intern.firstName">
                         </div>
                         <div class="col-sm-5">
                             <label for="contact_no">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder="Doe">
+                        <input type="text" class="form-control" id="last_name" placeholder="Doe" ng-model="intern.lasttName">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                             <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                        <input type="email" class="form-control" id="email" placeholder="john@example.com" ng-model="intern.email">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                         <label for="contact_no">Phone No.</label>
-                        <input type="number" class="form-control" id="contact_no" placeholder="+91 99999 00000">
+                        <input type="number" class="form-control" id="contact_no" placeholder="+91 99999 00000" ng-model="intern.contactNo">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                             <label for="answer">Why do you think you are perfect for this job?</label>
                        
-                        <input type="text" style="height:60px;" class="form-control" id="answer" placeholder="Answer">
+                        <input type="text" style="height:60px;" class="form-control" id="answer" placeholder="Answer" ng-model="intern.answer">
                         </div>
                     </div>
                      <div class="form-group">
                         <div class="col-sm-10">
                          <label for="CV"> Resume</label><br>
                          <label class="btn btn-default btn-file">
-                        <input type="file" style="display:none"  id="CV" placeholder="Resume" >Upload</input>
+                        <input type="file" style="display:none"  id="CV" placeholder="Resume">Upload</input>
                         </label>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10" style="margin-left:30%">
-                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="registerIntern()">Send</button>
                         </div>
                     </div>
                 </form>
@@ -100,7 +100,7 @@
             <div class="row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
-                    <button type="button" class="btn btn-primary btn-block" style="font-family:'Montserrat',sans-serif !important;" aria-hidden="true" ng-click="modal_show=true" ng-hide="modal_show"> Apply </button>
+                    <button type="button" class="btn btn-primary btn-block" style="font-family:'Montserrat',sans-serif !important;" aria-hidden="true" ng-click="modalShow=true" ng-hide="modalShow"> Apply </button>
                     
 
                     

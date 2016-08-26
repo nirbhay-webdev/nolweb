@@ -1,27 +1,52 @@
+
+
 var app = angular.module('nolWeb',['ngRoute','nolWeb-Services']);
 
 app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
                 $routeProvider.
                     when('/',{
-                    templateUrl:'templates/home.html'
+                    templateUrl:'templates/home.html',
+                    controller:'nolWebController'
                     }).when('/venues',{ 
                     templateUrl: 'templates/venues.html'
                     }).when('/about-us',{
                         templateUrl:'templates/aboutus.html'
                     }).when('/ambassador',{
-                    templateUrl:'templates/ambassador.html'}
+                    templateUrl:'templates/ambassador.html',
+                    controller:'nolAmbassadorController'                }
                     ).when('/contact-us',{
-                    templateUrl:'templates/contact.html'}
-                    ).when('/app',{
+                    templateUrl:'templates/contact.html',
+                    controller:'nolContactController'
+                    }).when('/app',{
                     templateUrl:'templates/app.html'
                     }).otherwise('/');
 
     }]);
 
 app.controller('nolWebController',['$scope','dataService',function($scope,dataService){
-        $scope.modal_show = false;
+    $scope.dataLive = true;
         $scope.init = function() {
-            dataService.getData().then(function(response){console.log(response,'logged')},function(response){})
+            $scope.data = new Array();
+
+            dataService.getData('data_type=historical').then(function(response){
+            console.log(response);
+            var counter = 0;
+
+            for(var i=0; i<(Math.ceil(response.length/3));i++)
+            {   $scope.data[i]=new Array();
+                for (var j=0;j<3;j++){
+                    $scope.data[i][j]=new Object;
+                    $scope.data[i][j]=response[counter];
+                    counter++;
+                    if(counter == response.length){
+                        break;
+                    }
+                }
+            }
+             console.log($scope.data,i); 
+            $scope.dataLive=false;
+        
+    },function(response){})
         }
 
         $scope.update = function() {
@@ -145,3 +170,43 @@ app.controller('nolWebController',['$scope','dataService',function($scope,dataSe
 
 
     }]);
+
+    app.controller('nolAmbassadorController',['$scope',function($scope){
+        
+        $scope.modalShow = false;
+
+        $scope.intern = {
+            firstName : '',
+            lastName :'',
+            email : '',
+            contactNo : '',
+            answer : '',
+        };
+
+        $scope.registerIntern = function(){
+            console.log( $scope.intern );
+            $scope.modalShow = false;
+        }
+
+        $scope.init = function(){
+            $scope.modalShow = false;
+        }
+
+    }]);
+
+  app.controller('nolContactController',['$scope',function($scope){
+        
+        $scope.msgRecieved = {
+            name:'',
+            email:'',
+            msg:'',
+            msgPosted:false,
+        }
+
+        $scope.requestedContact = function(){
+            $scope.msgPosted = true;
+            console.log($scope.msgRecieved);
+        
+        }
+
+  }]);

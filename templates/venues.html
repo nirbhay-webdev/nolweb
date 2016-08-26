@@ -31,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-5 col-sm-5"></div>
-                <div class="col-lg-1 col-sm-2"> 
+                <div class="col-lg-1 col-sm-2" ng-show ="dataLive"> 
                     <div class="dot-outer" style="display:inline-block;width:30px; height:30px; border:3px solid white; border-radius:15px;">
                         <div class="dot-inner" style="display:inline-block;width:10px; height:10px; border:5px solid white; border-radius:5px; margin:7px 0px 0px 7px"></div>
                     </div> 
@@ -43,10 +43,10 @@
 
     <div class="container-fluid container-margin">    
         
-            <div class="row" style="margin-left:0px !important;margin-right:0px !important" ng-repeat="arr in data">
+            <div class="row" style="margin-left:0px !important;margin-right:0px !important" ng-repeat="arr in data ">
                
                     
-                       <div class="card" ng-repeat="x in arr" ng-click="showpopup(x)">
+                       <div class="card" ng-repeat="x in arr track by $index" ng-click="showpopup(x)" ng-hide="">
                                 <div class="bg-img"><img src="{{x.imgUrl}}" ng-click="showpopup(x)"/><div class="grad"></div></div>
                                 <div class="card-title" >{{x.venue}}</div>
                                 <div class="mini-card-box">
