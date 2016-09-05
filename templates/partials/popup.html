@@ -1,0 +1,19 @@
+<div class="popup-info" ng-show="popupBtnClicked">
+    <div class="row">
+      <div class="col-lg-12">
+        <img style="position:absolute;margin-left:-15px" src="assets/images/{{venueToDisplayOnPopup.imgUrl}}.jpg" height="320px"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-offset-10 col-lg-2">
+        <span class="glyphicon glyphicon-remove" style="color:white; font-size:20px; margin-top:20px; cursor:pointer" ng-click="closePopUp()"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div style="width:100%;margin-top:80px !important;margin-bottom:80px; text-align:center !important; color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important;">{{venueToDisplayOnPopup.venue}}</div>
+      </div>
+
+
+    </div>
+</div>

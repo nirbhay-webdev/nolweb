@@ -1,75 +1,131 @@
-<div ng-controller ="nolWebController" ng-init="init()">
-    <div class="popup-info" ng-show="clicked">
-        <div class="row"><div class="col-lg-12">
-           
-                <img style="position:absolute;margin-left:-15px"  src="{{val.imgUrl}}"  width="560px"/>
-         
-        </div>
-        </div>
-        <div class="row"><div class="col-lg-10"><span style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important;margin-top:340px;margin-bottom: 200px">{{val.venue}}</span></div><div class="col-lg-2"><span class="glyphicon glyphicon-remove" style="color:white; font-size:20px; margin-top:20px; cursor:pointer" ng-click="clicked = false"></span></div></div>
-      
-    </div>
+<div ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()" ng-class="">
+    <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
     <div class="container-fluid header">
-            <div class="row">
-             <div class="col-xs 12 col-lg-3 col-md-3"><div class="header-title">#NOL</div></div>
-                <div class="col-lg-2 col-md-2 "></div>
-                <div class="col-xs-12 col-md-7 col-lg-7">
-                    <div class="header-menu"> 
-                        <ul style="color:white">
-                                <li><a ng-href="#/venues" style="color:black">Live Data</a></li>
-                                
-                                <li><a ng-href="#/app" style="color:black">App</a></li>
-                                <li><a ng-href="#/about-us" style="color:black">About Us</a></li>
-                                <li><a ng-href="#/ambassador" style="color:black">Ambassador</a></li>
-                                
-                                <li><a ng-href="#/contact-us" style="color:black"> Contact</a> </li>
-                         
-                        </ul>
-                   
-                   </div> 
+        <div class="row fixed-on-top">
+            <div class="col-xs-12 col-lg-3 col-md-3">
+                <div class="header-title">#NOL</div>
+            </div>
+            <div class="col-xs-12 col-md-offset-2 col-md-7 col-lg-offset-2 col-lg-7">
+                <div class="header-menu">
+                    <ul style="color:white">
+                        <li><a ng-href="#/venues">      Live Data   </a></li>
+                        <li><a ng-href="#/app">         App         </a></li>
+                        <li><a ng-href="#/about-us">    About Us    </a></li>
+                        <li><a ng-href="#/ambassador">  Ambassador  </a></li>
+                        <li><a ng-href="#/contact-us">  Contact     </a> </li>
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-5 col-sm-5"></div>
-                <div class="col-lg-1 col-sm-2" ng-show ="dataLive"> 
-                    <div class="dot-outer" style="display:inline-block;width:30px; height:30px; border:3px solid white; border-radius:15px;">
-                        <div class="dot-inner" style="display:inline-block;width:10px; height:10px; border:5px solid white; border-radius:5px; margin:7px 0px 0px 7px"></div>
-                    </div> 
-                    <div style="width:20px;display:inline-block"><span style="vertical-align:middle;font-size:20px !important; font-family:'Source Sans Pro',sans-serif !important; display:inline-block;">&nbsp;Live</span></div>
+        </div>
+        <div class="row" style="margin-top:100px">
+            <div class="col-lg-offset-5 col-lg-1 col-sm-offset-5 col-sm-2" ng-show="showLoader">
+                <div class="dot-outer" style="display:inline-block;width:30px; height:30px; border:3px solid white; border-radius:15px;">
+                    <div class="dot-inner" style="display:inline-block;width:10px; height:10px; border:5px solid white; border-radius:5px; margin:7px 0px 0px 7px"></div>
+                </div>
+                <div style="width:20px;display:inline-block">
+                    <span style="vertical-align:middle;font-size:20px !important; font-family:'Source Sans Pro',sans-serif !important; display:inline-block;">&nbsp;Live</span>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="loader-container" class="container-fluid" ng-show="showLoader">
+        <div class="row">
+            <div class="dot-outer" style="margin-left:calc(50% - 25px);display:inline-block;width:50px; height:50px; border:5px solid white; border-radius:25px;">
+                <div class="dot-inner" style="display:inline-block;width:20px; height:20px; border:10px solid white; border-radius:10px; margin:10px 0px 0px 10px"></div>
+            </div>
+        </div>
     </div>
 
-
-    <div class="container-fluid container-margin">    
-        
-            <div class="row" style="margin-left:0px !important;margin-right:0px !important" ng-repeat="arr in data ">
-               
-                    
-                       <div class="card" ng-repeat="x in arr track by $index" ng-click="showpopup(x)" ng-hide="">
-                                <div class="bg-img"><img src="{{x.imgUrl}}" ng-click="showpopup(x)"/><div class="grad"></div></div>
-                                <div class="card-title" >{{x.venue}}</div>
-                                <div class="mini-card-box">
-                                    <div class="mini-cards" style="background:rgba(28,202,90,0.8);border:1px solid rgba(28,202,90,1);"> <span class="mini-cards-tag">PEOPLE</span><br><span class="mini-cards-value">{{x.people}}</span></div>
-                                    <div class="mini-cards" style="background:rgba(74,144,226,0.8);border:1px solid rgba(74,144,226,1);"><span class="mini-cards-tag"> MALES</span><br><span class="mini-cards-value">{{x.male}}</span> </div>
-                                    <div class="mini-cards" style="background:rgba(237,51,123,0.8);border:1px solid rgba(237,51,123,1);"><span class="mini-cards-tag"> FEMALES</span><br><span class="mini-cards-value">{{x.female}}</span> </div>
-                                    <div class="mini-cards" style="background:rgba(245,245,245,0.8);border:1px solid rgba(245,245,245,1);"> <span class="mini-cards-tag">FULLNESS</span><br><span class="mini-cards-value">{{x.fullness}}</span> </div>
-                                </div>
-                                <div class="three-text-box">
-                                    <div class="text-box"><span class="text-box-tag">VIBE</span><br><span class="text-box-value">{{x.vibe}}</span></div>
-                                    <div class="text-box"><span class="text-box-tag">MUSIC GENRE</span><br><span class="text-box-value">{{x.genre}}</span></div>
-                                    <div class="text-box"><span class="text-box-tag">MUSIC TYPE</span><br><span class="text-box-value">{{x.type}}</span></div>
-                                </div>
-                      </div>
+    <div id="live-data-container" class="container-fluid container-margin" ng-show="showLiveDataSection">
+        <div class="row" id="live-data">
+            <div class="info-bar info-bar-fixed" ng-hide="hideLivePreview">
+                <center>Live Preview</center>
             </div>
+        </div>
+        <div class="row" ng-repeat="coloumnArray in liveDataStorage">
+          <div class="card" ng-repeat="element in coloumnArray track by $index" ng-click="showPopup(element)" ng-hide="">
+            <div class="bg-img">
+                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)" />
+                    <div class="grad"></div>
+            </div>
+                <div class="card-title">{{element.venue}}</div>
+                <div class="mini-card-box">
+                    <div class="mini-cards mini-card-people">
+                        <span class="mini-cards-tag">PEOPLE</span><br>
+                        <span class="mini-cards-value">{{element.people}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-males">
+                        <span class="mini-cards-tag"> MALES</span><br>
+                        <span class="mini-cards-value">{{element.male}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-female">
+                        <span class="mini-cards-tag"> FEMALES</span><br>
+                        <span class="mini-cards-value">{{element.female}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-fullness">
+                        <span class="mini-cards-tag">FULLNESS</span><br>
+                        <span class="mini-cards-value">{{element.fullness}}</span>
+                    </div>
+                </div>
+                <div class="three-text-box">
+                    <div class="text-box">
+                        <span class="text-box-tag">VIBE</span><br><span class="text-box-value">{{element.vibe}}</span>
+                    </div>
+                    <div class="text-box">
+                        <span class="text-box-tag">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
+                    </div>
+                    <div class="text-box">
+                        <span class="text-box-tag">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-            <div class="row load-more">
-                <div class="col-xs-12 col-lg-1">
-                    <button type="button" class="btn btn-default btn-xs" ng-click="loadMore()">
-                        Load more <span class="caret"></span> 
-                    </button>
-                </div>  
-            </div>       
+    </div>
+    <div id="live-data-container" class="container-fluid container-margin" ng-show="showHistoricalDataSection">
+        <div class="row" id="hist-data">
+            <div class="info-bar" ng-class="{'info-bar-fixed2':hideLivePreview}">
+                <center>Projections For Today</center>
+            </div>
+        </div>
+        <div class="row" ng-repeat="coloumnArray in historicalDataStorage ">
+            <div class="card" ng-repeat="element in coloumnArray track by $index" ng-click="showPopup(element)" ng-hide="">
+                <div class="bg-img">
+                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)" />
+                    <div class="grad"></div>
+                </div>
+                <div class="card-title">{{element.venue}}</div>
+                <div class="mini-card-box">
+                    <div class="mini-cards mini-card-people">
+                        <span class="mini-cards-tag">PEOPLE</span><br>
+                        <span class="mini-cards-value">{{element.people}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-males">
+                        <span class="mini-cards-tag"> MALES</span><br>
+                        <span class="mini-cards-value">{{element.male}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-female">
+                        <span class="mini-cards-tag"> FEMALES</span><br>
+                        <span class="mini-cards-value">{{element.female}}</span>
+                    </div>
+                    <div class="mini-cards mini-card-fullness">
+                        <span class="mini-cards-tag">FULLNESS</span><br>
+                        <span class="mini-cards-value">{{element.fullness}}</span>
+                    </div>
+                </div>
+                <div class="three-text-box">
+                    <div class="text-box">
+                        <span class="text-box-tag">VIBE</span><br>
+                        <span class="text-box-value">{{element.vibe}}</span>
+                    </div>
+                    <div class="text-box">
+                        <span class="text-box-tag">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
+                    </div>
+                    <div class="text-box">
+                        <span class="text-box-tag">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

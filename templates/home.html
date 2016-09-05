@@ -1,22 +1,25 @@
 <div class="container-fluid home" ng-controller="nolHomeController" >
-
     <div class="row main-title" ng-hide="showLoader">
-       <center> <h1 style="font-size:64px !important; ">Night Out Loud<br> in <br> Hauz Khas Village</h1></center>
-        <center><h4 style="font-size:36px !important;color:white !important;font-family:'Source Sans Pro', sans-serif !important;">Ultimate Nightlife Guide</h4></center>
+       <div class="col-lg-offset-3 col-lg-6">
+            <h1>Night Out Loud<br> in <br> Hauz Khas Village</h1>
+            <h4>Ultimate Nightlife Guide</h4>
+        </div>
     </div>
-
     <div class="row sub-title" ng-hide="showLoader">
-        <center><span style="font-size:48px;"> Discover Nightlife in an easy way</span></center>
-        <center><span style="font-family:'Source Sans Pro', sans-serif !important;font-size:36px;" >We connect you with most happening places</span></center>
+        <div class="col-lg-offset-2 col-lg-8">
+            <span id="text-section-first"> Discover Nightlife in an easy way</span><br>
+            <span id="text-section-second">We connect you with most happening places</span>
+        </div>
     </div>
-    
     <div class="row" ng-hide="showLoader"> 
-        <center>
-            <span class="caret-btn animated pulse" ng-click="takeToVenues()"></span>
-        </center>
+        <div class="col-lg-offset-5 col-lg-2">
+            <span class="caret-btn animated pulse" ng-click="takeToVenuesPage()"></span>
+        </div>
     </div>
     <div class="row" style ="margin-top:45vh; " ng-show="showLoader">
-        <div class="dot-outer" style="margin-left:calc(50% - 25px);display:inline-block;width:50px; height:50px; border:5px solid white; border-radius:25px;"><div class="dot-inner" style="display:inline-block;width:20px; height:20px; border:10px solid white; border-radius:10px; margin:10px 0px 0px 10px"></div></div>
-        <h4>Loading</h4>
+        <div class="dot-outer home-loader-outer">
+            <div class="dot-inner home-loader-inner">
+            </div>
+        </div>
     </div>
 </div>

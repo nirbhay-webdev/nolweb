@@ -1,19 +1,19 @@
 
 
-var app = angular.module('nolWeb',['ngRoute','nolWeb-Services']);
+var app = angular.module('nolWeb',['ngRoute','nolWeb-Services','ngAnimate']);
 
 app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
                 $routeProvider.
                     when('/',{
                     templateUrl:'templates/home.html',
                     controller:'nolWebController'
-                    }).when('/venues',{ 
+                    }).when('/venues',{
                     templateUrl: 'templates/venues.html'
                     }).when('/about-us',{
                         templateUrl:'templates/aboutus.html'
                     }).when('/ambassador',{
                     templateUrl:'templates/ambassador.html',
-                    controller:'nolAmbassadorController'                }
+                    controller:'nolAmbassadorController'}
                     ).when('/contact-us',{
                     templateUrl:'templates/contact.html',
                     controller:'nolContactController'
@@ -23,159 +23,138 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
 
     }]);
 
-app.controller('nolWebController',['$scope','dataService',function($scope,dataService){
-    $scope.dataLive = true;
-        $scope.init = function() {
-            $scope.data = new Array();
+app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService',function($scope,$rootScope,$timeout,dataService){
 
-            dataService.getData('data_type=historical').then(function(response){
-            console.log(response);
-            var counter = 0;
+    $scope.showLoader = true;
+    $scope.dataAvailable = false;
+    $scope.showLiveDataSection = false;
+    $scope.showHistoricalDataSection = false;
+    $scope.popupBtnClicked = false;
+    $scope.venueToDisplayOnPopup = {};
+    $rootScope.popupBtnClicked = false;
+    $scope.hideLivePreview = false;
 
-            for(var i=0; i<(Math.ceil(response.length/3));i++)
-            {   $scope.data[i]=new Array();
-                for (var j=0;j<3;j++){
-                    $scope.data[i][j]=new Object;
-                    $scope.data[i][j]=response[counter];
-                    counter++;
-                    if(counter == response.length){
-                        break;
+
+    $scope.showPopup = function(venueToDisplay){
+        $scope.venueToDisplayOnPopup = venueToDisplay;
+        $scope.popupBtnClicked = true;
+        // console.log('popup function invoked');
+        $rootScope.popupBtnClicked=true;
+    };
+
+    $scope.closePopUp =function(){
+      $scope.popupBtnClicked = false;
+      $rootScope.popupBtnClicked =false;
+    };
+//On Page Load Variable Initiazlizer Function Specification
+
+    $scope.variableInitializerOnPageLoad = function() {
+
+            window.addEventListener('scroll',doWhenUserScrolls);
+            $scope.liveDataStorage = [];
+            $scope.historicalDataStorage = [];
+
+            dataService.getData('data_type=current').then(doWhenLiveDataRecieved,doWhenError);
+            dataService.getData('data_type=historical').then(doWhenHistoricalDataRecieved,doWhenError);
+
+            function doWhenLiveDataRecieved(response){
+                $scope.liveDataStorage = createArrayLayoutForVenues(response);
+                var checkForLiveDataSize = $scope.liveDataStorage.length > 0;
+                if(checkForLiveDataSize){
+                        $scope.showLiveDataSection=true;
+                        $scope.dataAvailable = true;
+                        $scope.showLoader = false;
                     }
-                }
             }
-             console.log($scope.data,i); 
-            $scope.dataLive=false;
-        
-    },function(response){})
-        }
 
-        $scope.update = function() {
+            function doWhenHistoricalDataRecieved (response){
+                 $scope.historicalDataStorage = createArrayLayoutForVenues(response);
+                 $scope.showHistoricalDataSection = true;
+                 $scope.showLoader=false;
+                 console.log($scope.historicalDataStorage);
 
-        }
+            }
+            function doWhenError (error){
+                console.log('data not available');
+            }
 
+            function doWhenUserScrolls(event){
 
-        $scope.clicked = false;
-        $scope.val = {};
+              var currentWindowScroll = window.scrollY;
+              var liveDataTagOffset = document.getElementById('live-data').offsetTop;
+              var histDataTagOffset = document.getElementById('hist-data').offsetTop;
+              var offsetDiff = histDataTagOffset - liveDataTagOffset;
+              // console.log(temp);
+              if(currentWindowScroll> offsetDiff){
+                // console.log('done');
+                $scope.hideLivePreview = true;
+                $scope.$apply();
+              }
+              if(currentWindowScroll < offsetDiff){
+                $scope.hideLivePreview = false;
+                $scope.$apply();
+              }
+            }
+    };
+//Method Specification Ends Here
 
-        $scope.showpopup = function(venueName){
-            $scope.val = venueName;
-            $scope.clicked = true;
-        }
+/*
 
-        $scope.data = [[{ venue:'Masha',
-                         imgUrl:'assets/images/hauz-khas-social.png',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                        },
-                        { venue:'Out of the Box',
-                         imgUrl:'assets/images/otb.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    },
-                        { venue:'Maquina',
-                         imgUrl:'assets/images/maquina.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    }],
-                        [{ venue:'Mafioso',
-                         imgUrl:'assets/images/mafioso.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    },
-                        { venue:'Fork You',
-                         imgUrl:'assets/images/fork-you.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    },
-                        { venue:'Village Deck',
-                         imgUrl:'assets/images/villagedeck.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    }],
-                        [{ venue:'The Frat House',
-                         imgUrl:'assets/images/frathouse.png',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    },
-                        { venue:'ELF',
-                         imgUrl:'assets/images/elf.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    },
-                         { venue:'Imperfecto',
-                         imgUrl:'assets/images/imperfecto.jpg',
-                         people: 100,
-                         male:60,
-                         female:40,
-                         fullness:'50%',
-                         vibe:'upbeat',
-                         genre:'Electronic',
-                         type:'Live Band',
-                    }]];
-    
-    
+   createArrayLayoutForVenues function for converting one dimensional array to two dimensional array
+
+*/
+            function createArrayLayoutForVenues(oneDimArray){
+
+                var twoDimArray = [];
+                var trackerFor1DArray = 0;
+                var numberOfRowsFor2DArray=Math.ceil(oneDimArray.length/3);
+                var noOfColoumns = 3;
+                var tailOf1DArray = oneDimArray.length;
+                // 
+                // var counter = 0;
+                // for(i = 0 ; i < numberOfRowsFor2DArray; i=i+3 ){
+                //     a[counter][i] = oneDimArray[i];
+                //     a[coutner][i+1] = oneDimArray[i+1];
+                //     a[counter][i+2] = oneDimArray[i+2];
+                //     counter++;
+                // }
+
+                for(var rowIndex=0; rowIndex < numberOfRowsFor2DArray; rowIndex++){
+
+                      twoDimArray[rowIndex]=[]; //Initializing every row as a new Array
+
+                        for (var coloumnIndex=0; coloumnIndex < noOfColoumns; coloumnIndex++){
+
+                            twoDimArray[rowIndex][coloumnIndex]={};
+                            twoDimArray[rowIndex][coloumnIndex]=oneDimArray[trackerFor1DArray];
+                            trackerFor1DArray++;
+
+                            if(trackerFor1DArray == tailOf1DArray){
+                                break;
+                            }
+                        }
+                    }
+                return twoDimArray;
+            }
+
     }]);
+// nolWebController Specification ends Here
 
-    app.controller('nolHomeController',['$timeout','$location','$scope',function($timeout,$location,$scope){
-       
+app.controller('nolHomeController',['$timeout','$location','$scope',function($timeout,$location,$scope){
+
         $scope.showLoader=false;
 
-        $scope.takeToVenues = function(){
-           
+        $scope.takeToVenuesPage = function(){
             $scope.showLoader=true;
-
-            $timeout(function(){$location.path('/venues')},4000);
-            
-        }
-
-
+            $timeout(function(){$location.path('/venues');},4000);
+        };
     }]);
 
-    app.controller('nolAmbassadorController',['$scope',function($scope){
-        
+app.controller('nolAmbassadorController',['$scope',function($scope){
+
         $scope.modalShow = false;
 
-        $scope.intern = {
+        $scope.internRegistrationDetails = {
             firstName : '',
             lastName :'',
             email : '',
@@ -183,30 +162,30 @@ app.controller('nolWebController',['$scope','dataService',function($scope,dataSe
             answer : '',
         };
 
-        $scope.registerIntern = function(){
-            console.log( $scope.intern );
+        $scope.completeInternRegistration = function(){
+            console.log( $scope.internRegistrationDetails );
             $scope.modalShow = false;
-        }
+        };
 
-        $scope.init = function(){
+        $scope.AmbassadorControllerIntializer = function(){
             $scope.modalShow = false;
-        }
+        };
 
     }]);
 
   app.controller('nolContactController',['$scope',function($scope){
-        
+
         $scope.msgRecieved = {
             name:'',
             email:'',
             msg:'',
             msgPosted:false,
-        }
+        };
 
         $scope.requestedContact = function(){
             $scope.msgPosted = true;
             console.log($scope.msgRecieved);
-        
-        }
+
+        };
 
   }]);
