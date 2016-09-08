@@ -5,10 +5,11 @@ var app = angular.module('nolWeb',['ngRoute','nolWeb-Services','ngAnimate']);
 app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
                 $routeProvider.
                     when('/',{
-                    templateUrl:'templates/home.html',
+                    templateUrl:'templates/venues.html',
                     controller:'nolWebController'
                     }).when('/venues',{
-                    templateUrl: 'templates/venues.html'
+                    templateUrl: 'templates/venues.html',
+                    controller:'nolWebController'
                     }).when('/about-us',{
                         templateUrl:'templates/aboutus.html'
                     }).when('/ambassador',{
@@ -19,6 +20,9 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
                     controller:'nolContactController'
                     }).when('/app',{
                     templateUrl:'templates/app.html'
+                    }).when('/new-home',{
+                    templateUrl:'templates/new_home.html',
+                    controller:'newHomeController'
                     }).otherwise('/');
 
     }]);
@@ -33,7 +37,22 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
     $scope.venueToDisplayOnPopup = {};
     $rootScope.popupBtnClicked = false;
     $scope.hideLivePreview = false;
+    $scope.showMenuTabList = false;
 
+    $scope.showMenuItems = function () {
+
+      $scope.showMenuTabList = !$scope.showMenuTabList;
+      if($scope.showMenuTabList){
+        $('.info-bar-fixed').css("top","260px");
+        $('.header').css("height","260px");
+        $('.fixed-on-top').css("height","260px");
+      }
+      else{
+        $('.info-bar-fixed').css("top","110px");
+        $('.header').css("height","110px");
+        $('.fixed-on-top').css("height","110px");
+      }
+    };
 
     $scope.showPopup = function(venueToDisplay){
         $scope.venueToDisplayOnPopup = venueToDisplay;
@@ -68,7 +87,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             }
 
             function doWhenHistoricalDataRecieved (response){
-                 $scope.historicalDataStorage = createArrayLayoutForVenues(response);
+                 $scope.historicalDataStorage = response;
                  $scope.showHistoricalDataSection = true;
                  $scope.showLoader=false;
                  console.log($scope.historicalDataStorage);
@@ -110,7 +129,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
                 var numberOfRowsFor2DArray=Math.ceil(oneDimArray.length/3);
                 var noOfColoumns = 3;
                 var tailOf1DArray = oneDimArray.length;
-                // 
+                //
                 // var counter = 0;
                 // for(i = 0 ; i < numberOfRowsFor2DArray; i=i+3 ){
                 //     a[counter][i] = oneDimArray[i];
@@ -140,15 +159,44 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
     }]);
 // nolWebController Specification ends Here
 
-app.controller('nolHomeController',['$timeout','$location','$scope',function($timeout,$location,$scope){
+app.controller('nolHomeController',['$rootScope','$timeout','$interval','$location','$scope',function($rootScope,$timeout,$interval,$location,$scope){
 
+      $rootScope.showLiveDataSection = false;
+      $rootScope.showHistoricalDataSection= false;
+      $rootScope.rollUpSplashScreen = false;
+
+
+      $scope.homeInitializer = function(){
+          $rootScope.switchToVenuesPage=false;
+          window.addEventListener('scroll',splashScrollScreen);
+          // $timeout(scrollToVenues,3000);
+
+          function splashScrollScreen (event){
+            // window.scrollTo(0,0);
+            $rootScope.showLiveDataSection = true;
+            $rootScope.showHistoricalDataSection= true;
+            $rootScope.rollUpSplashScreen = true;
+            $timeout(function(){
+              window.scrollTo(0,0);
+              $rootScope.switchToVenuesPage = true;
+            },2000);
+            window.removeEventListener('scroll',splashScrollScreen);
+            console.log('debugging the current event');
+          }
+          function scrollToVenues () {
+             var event = new Event('scroll');
+             window.dispatchEvent(event);
+             window.removeEventListener('scroll',splashScrollScreen);
+          }
+      };
+
+        $rootScope.switchToVenuesPage = false;
         $scope.showLoader=false;
 
-        $scope.takeToVenuesPage = function(){
-            $scope.showLoader=true;
-            $timeout(function(){$location.path('/venues');},4000);
-        };
+
     }]);
+
+
 
 app.controller('nolAmbassadorController',['$scope',function($scope){
 

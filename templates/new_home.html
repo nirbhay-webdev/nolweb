@@ -1,23 +1,9 @@
-<div id="home-splash-screen" class="container-fluid container-margin home" ng-controller="nolHomeController" ng-init="homeInitializer()">
 <style>
 body{
   overflow-x:hidden;
   width:100vw;
   height:100vh;
-  /*background-color: rgba(0,0,0,.91);*/
-}
-.home{
-width:100vw;
-
-}
-
-.gradient{
-  position: absolute;
-  width: 100vw;
-  height:100vh;
-  top:0vh;
-  background: linear-gradient(to top, rgba(0,0,0,.91) 10%, transparent);
-  z-index:100000;
+  background-color: rgba(0,0,0,.91);
 }
 .new-home{
   width:100vw;
@@ -25,14 +11,12 @@ width:100vw;
   overflow:hidden;
   padding-left:0px !important;
   padding-right:0px !important;
-  margin-left:0px !important;
-  margin-right:0px !important;
-background-color: rgba(0,0,0,.91);
+  background: linear-gradient(to top, black, transparent);
 }
 .circle-1 {
   position:absolute;
-  width: 544px;
-  margin-left:calc(50vw - 272px);
+  width: 36.66vw;
+  margin-left:calc(50vw - 18.33vw);
   margin-right:auto;
 }
 
@@ -42,8 +26,8 @@ background-color: rgba(0,0,0,.91);
 
 .circle-2 {
   position:absolute;
-  width: 950px;
-  margin-left:calc(50vw - 475px);
+  width: 70.46vw;
+  margin-left:calc(50vw - 35.23vw);
   margin-right:auto;
 }
 
@@ -53,10 +37,9 @@ background-color: rgba(0,0,0,.91);
 
 .circle-3 {
   position:absolute;
-  width:1432px;
-  margin-left:calc(50vw - 716px);
+  width:106.6vw;
+  margin-left:calc(50vw - 53.2vw);
   margin-right:auto;
-
 }
 
 .circle-3> img{
@@ -64,60 +47,44 @@ background-color: rgba(0,0,0,.91);
 }
 
 .logo-banner {
-  width:43vh;
-  height:35vh;
-  margin-top:15.5vh;
-  margin-left:calc(50vw - 21.5vh);
+  width:26.8vw;
+  height:21.8vw;
+  margin-top:12.22vw;
+  margin-left:36.6vw;
   /*background:white;*/
     /*border:solid white 1px;*/
-    z-index: 1000000000;
 }
 .title-banner{
-  position:absolute;
-  top:calc(35vh + 19.5vh + 10vh);
-  /*margin-top:8.76vw;*/
-  margin-left:calc(50vw - 21.10vh);
-  width:42.21vh;
-  height:19.06vh;
+  position:fixed;
+  bottom:12.15vw;
+  margin-top:10.27vw;
+  margin-left:34vw;
+  width:32vw;
+  height:14.58vw;
   /*background:white;*/
-  z-index: 1000000000;
-}
-
-.bottom-banner {
-  position:absolute;
-  width:54.22vh;
-  height:3.77vh;
-  margin-left:calc(50vw - 27.11vh);
-  top:90vh;
-z-index: 1000000000;
 }
 .title-banner img {
-  width:42.21vh;
+  width:32vw;
 }
 .logo-banner  img{
-  width:43vh;
+  width:26.8vw;
 }
 
 .bar-upper img {
-  margin-bottom:4.7vh;
+  margin-bottom:2.5vw;
 }
 
 .night img{
-  margin-bottom: 4.7vh;
+  margin-bottom: 2.5vw;
 }
 .out img {
-  margin-bottom: 4.7vh;
+  margin-bottom: 2.5vw;
 }
 .loud img{
-  margin-bottom: 4.7vh;
-}
-.bottom-banner img{
-  width:54.22vh;
+  margin-bottom: 2.5vw;
 }
 </style>
-<div class="gradient">
 
-</div>
 <div class="container-fluid new-home">
   <div class="circle-1">
     <img src="assets/home-page-image-assets/circle1.png"/>
@@ -153,14 +120,6 @@ z-index: 1000000000;
       <img src="assets/home-page-image-assets/hauz-khas.png"/>
     </div>
   </div>
-  <div class="bottom-banner">
-    <div class="dive">
-      <img src="assets/home-page-image-assets/div.png"/ >
-    </div>
   </div>
   </div>
-  </div>
-</div>
-
-
 </div>

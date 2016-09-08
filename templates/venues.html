@@ -1,33 +1,36 @@
-<div ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()" ng-class="">
+<div ng-include="'templates/home.html'" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
+
+<div class="venue-container" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
+
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
-    <div class="container-fluid header">
-        <div class="row fixed-on-top">
-            <div class="col-xs-12 col-lg-3 col-md-3">
+
+    <div class="container-fluid header" ng-show="rollUpSplashScreen">
+        <div class="row" ng-class="{'fixed-on-top':switchToVenuesPage}">
+            <div class="col-xs-12 col-sm 12 col-lg-3 col-md-3">
                 <div class="header-title">#NOL</div>
             </div>
-            <div class="col-xs-12 col-md-offset-2 col-md-7 col-lg-offset-2 col-lg-7">
+            <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-7 col-lg-offset-2 col-lg-7">
                 <div class="header-menu">
+                  <div class="menu-tab">
+                    <a ng-href="" ng-click="showMenuItems()"><span class="glyphicon glyphicon-th-large"></span></a>
+                  </div>
+
+                  <div class="menu-tab-list-hidden" ng-class="{'menu-tab-list':showMenuTabList}">
+
+
                     <ul style="color:white">
-                        <li><a ng-href="#/venues">      Live Data   </a></li>
+                        <li> <a ng-href="#/venues">      Live Data   </a></li>
                         <li><a ng-href="#/app">         App         </a></li>
                         <li><a ng-href="#/about-us">    About Us    </a></li>
                         <li><a ng-href="#/ambassador">  Ambassador  </a></li>
                         <li><a ng-href="#/contact-us">  Contact     </a> </li>
                     </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-top:100px">
-            <div class="col-lg-offset-5 col-lg-1 col-sm-offset-5 col-sm-2" ng-show="showLoader">
-                <div class="dot-outer" style="display:inline-block;width:30px; height:30px; border:3px solid white; border-radius:15px;">
-                    <div class="dot-inner" style="display:inline-block;width:10px; height:10px; border:5px solid white; border-radius:5px; margin:7px 0px 0px 7px"></div>
-                </div>
-                <div style="width:20px;display:inline-block">
-                    <span style="vertical-align:middle;font-size:20px !important; font-family:'Source Sans Pro',sans-serif !important; display:inline-block;">&nbsp;Live</span>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="loader-container" class="container-fluid" ng-show="showLoader">
         <div class="row">
             <div class="dot-outer" style="margin-left:calc(50% - 25px);display:inline-block;width:50px; height:50px; border:5px solid white; border-radius:25px;">
@@ -37,7 +40,7 @@
     </div>
 
     <div id="live-data-container" class="container-fluid container-margin" ng-show="showLiveDataSection">
-        <div class="row" id="live-data">
+        <div class="row info-bar-outer" id="live-data">
             <div class="info-bar info-bar-fixed" ng-hide="hideLivePreview">
                 <center>Live Preview</center>
             </div>
@@ -83,15 +86,15 @@
 
     </div>
     <div id="live-data-container" class="container-fluid container-margin" ng-show="showHistoricalDataSection">
-        <div class="row" id="hist-data">
-            <div class="info-bar" ng-class="{'info-bar-fixed2':hideLivePreview}">
+        <div class="row info-bar-outer" id="hist-data">
+            <div class="info-bar info-bar-fixed" ng-show="switchToVenuesPage">
                 <center>Projections For Today</center>
             </div>
         </div>
-        <div class="row" ng-repeat="coloumnArray in historicalDataStorage ">
-            <div class="card" ng-repeat="element in coloumnArray track by $index" ng-click="showPopup(element)" ng-hide="">
+        <div class="row1">
+            <div class="card" ng-repeat="element in historicalDataStorage " ng-click="showPopup(element)">
                 <div class="bg-img">
-                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)" />
+                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)"/>
                     <div class="grad"></div>
                 </div>
                 <div class="card-title">{{element.venue}}</div>
