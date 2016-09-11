@@ -6,18 +6,16 @@
 
     <div class="container-fluid header" ng-show="rollUpSplashScreen">
         <div class="row" ng-class="{'fixed-on-top':switchToVenuesPage}">
-            <div class="col-xs-12 col-sm 12 col-lg-3 col-md-3">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                 <div class="header-title">#NOL</div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-7 col-lg-offset-2 col-lg-7">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-offset-2 col-lg-7">
                 <div class="header-menu">
                   <div class="menu-tab">
-                    <a ng-href="" ng-click="showMenuItems()"><span class="glyphicon glyphicon-th-large"></span></a>
+                    <a ng-href="" ng-click="showMenuItems()"><span class="menu-tab-btn glyphicon glyphicon-th-large"></span></a>
                   </div>
 
                   <div class="menu-tab-list-hidden" ng-class="{'menu-tab-list':showMenuTabList}">
-
-
                     <ul style="color:white">
                         <li> <a ng-href="#/venues">      Live Data   </a></li>
                         <li><a ng-href="#/app">         App         </a></li>
@@ -26,10 +24,11 @@
                         <li><a ng-href="#/contact-us">  Contact     </a> </li>
                     </ul>
                   </div>
+
                 </div>
             </div>
         </div>
-    </div>
+      </div>
 
     <div id="loader-container" class="container-fluid" ng-show="showLoader">
         <div class="row">
@@ -39,7 +38,7 @@
         </div>
     </div>
 
-    <div id="live-data-container" class="container-fluid container-margin" ng-show="showLiveDataSection">
+    <div id="live-data-container" class="container-fluid container-margin" ng-show="false">
         <div class="row info-bar-outer" id="live-data">
             <div class="info-bar info-bar-fixed" ng-hide="hideLivePreview">
                 <center>Live Preview</center>
@@ -72,13 +71,13 @@
                 </div>
                 <div class="three-text-box">
                     <div class="text-box">
-                        <span class="text-box-tag">VIBE</span><br><span class="text-box-value">{{element.vibe}}</span>
+                        <span class="text-box-tag vibe">VIBE</span><br><span class="text-box-value">{{element.vibe}}</span>
                     </div>
                     <div class="text-box">
-                        <span class="text-box-tag">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
+                        <span class="text-box-tag music-genre">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
                     </div>
                     <div class="text-box">
-                        <span class="text-box-tag">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
+                        <span class="text-box-tag music-type">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
                     </div>
                 </div>
             </div>
@@ -118,14 +117,14 @@
                 </div>
                 <div class="three-text-box">
                     <div class="text-box">
-                        <span class="text-box-tag">VIBE</span><br>
-                        <span class="text-box-value">{{element.vibe}}</span>
+                        <span class="text-box-tag vibe">VIBE</span>
+                        <span class="text-box-value vibe">{{element.vibe}}</span>
                     </div>
                     <div class="text-box">
-                        <span class="text-box-tag">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
+                        <span class="text-box-tag music-genre">MUSIC GENRE</span><span class="text-box-value music-genre">{{element.genre}}</span>
                     </div>
                     <div class="text-box">
-                        <span class="text-box-tag">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
+                        <span class="text-box-tag music-type">MUSIC TYPE</span><span class="text-box-value music-type">{{element.type}}</span>
                     </div>
                 </div>
             </div>

@@ -43,14 +43,14 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
       $scope.showMenuTabList = !$scope.showMenuTabList;
       if($scope.showMenuTabList){
-        $('.info-bar-fixed').css("top","260px");
-        $('.header').css("height","260px");
-        $('.fixed-on-top').css("height","260px");
+        $('.info-bar-fixed').css("top","280px");
+        $('.header').css("height","280px");
+        $('.fixed-on-top').css("height","280px");
       }
       else{
-        $('.info-bar-fixed').css("top","110px");
-        $('.header').css("height","110px");
-        $('.fixed-on-top').css("height","110px");
+        $('.info-bar-fixed').css("top","120px");
+        $('.header').css("height","120px");
+        $('.fixed-on-top').css("height","120px");
       }
     };
 
