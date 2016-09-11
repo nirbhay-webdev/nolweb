@@ -1,6 +1,6 @@
 <div ng-include="'templates/home.html'" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
 
-<div class="venue-container" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
+<div class="venue-container"   ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
 
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
 
@@ -17,11 +17,11 @@
 
                   <div class="menu-tab-list-hidden" ng-class="{'menu-tab-list':showMenuTabList}">
                     <ul style="color:white">
-                        <li> <a ng-href="#/venues">      Live Data   </a></li>
-                        <li><a ng-href="#/app">         App         </a></li>
-                        <li><a ng-href="#/about-us">    About Us    </a></li>
-                        <li><a ng-href="#/ambassador">  Ambassador  </a></li>
-                        <li><a ng-href="#/contact-us">  Contact     </a> </li>
+                        <li ng-class="{'li-active':li-selected == 'live-data'}"><a ng-href="#/venues" ng-click="li-selected = 'live-data'">      Live Data   </a></li>
+                        <li ng-class="{'li-active':li-selected == 'app'}"><a ng-href="#/app" ng-click="li-selected = 'app'">         App         </a></ling-class>
+                        <li ng-class="{'li-active':li-selected == 'about-us'}"><a ng-href="#/about-us" ng-click="li-selected = 'about-us'">    About Us    </a></li>
+                        <li ng-class="{'li-active':li-selected == 'ambassador'}"><a ng-href="#/ambassador" ng-click="li-selected = 'ambassador'">  Ambassador  </a></li>
+                        <li ng-class="{'li-active':li-selected == 'contact'}"><a ng-href="#/contact-us" ng-click="li-selected = 'contact'">  Contact     </a> </li>
                     </ul>
                   </div>
 

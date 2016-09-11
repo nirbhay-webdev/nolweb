@@ -6,7 +6,7 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
                 $routeProvider.
                     when('/',{
                     templateUrl:'templates/venues.html',
-                    controller:'nolWebController'
+                    controller:'nolHomeController'
                     }).when('/venues',{
                     templateUrl: 'templates/venues.html',
                     controller:'nolWebController'
@@ -172,12 +172,17 @@ app.controller('nolHomeController',['$rootScope','$timeout','$interval','$locati
           // $timeout(scrollToVenues,3000);
 
           function splashScrollScreen (event){
+
+
             // window.scrollTo(0,0);
+            console.log(event);
             $rootScope.showLiveDataSection = true;
             $rootScope.showHistoricalDataSection= true;
             $rootScope.rollUpSplashScreen = true;
+
             $timeout(function(){
               window.scrollTo(0,0);
+              $('.venue-container').css('overflow-y','scroll');
               $rootScope.switchToVenuesPage = true;
             },2000);
             window.removeEventListener('scroll',splashScrollScreen);

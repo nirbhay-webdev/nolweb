@@ -70,6 +70,7 @@ background-color: rgba(0,0,0,.91);
   margin-left:calc(50vw - 21.5vh);
   /*background:white;*/
     /*border:solid white 1px;*/
+    opacity:1;
     z-index: 1000000000;
 }
 .title-banner{
@@ -89,7 +90,7 @@ background-color: rgba(0,0,0,.91);
   height:3.77vh;
   margin-left:calc(50vw - 27.11vh);
   top:90vh;
-z-index: 1000000000;
+  z-index: 1000000000;
 }
 .title-banner img {
   width:42.21vh;
@@ -100,19 +101,54 @@ z-index: 1000000000;
 
 .bar-upper img {
   margin-bottom:4.7vh;
+  z-index:100000000000000000;
 }
 
 .night img{
   margin-bottom: 4.7vh;
+  z-index:100000000000000000;
 }
 .out img {
   margin-bottom: 4.7vh;
+  z-index:100000000000000000;
 }
 .loud img{
   margin-bottom: 4.7vh;
+  z-index:100000000000000000;
 }
 .bottom-banner img{
   width:54.22vh;
+  z-index:100000000000000000;
+}
+
+@media only screen and (max-width:544px) {
+  .title-banner{
+    position:absolute;
+    top:calc(35vh + 19.5vh + 10vh);
+    /*margin-top:8.76vw;*/
+    margin-left:20vw;
+    width:60vw;
+    height:19.06vh;
+    /*background:white;*/
+    z-index: 1000000000;
+  }
+
+  .bottom-banner {
+    position:absolute;
+    width:60vw;
+    height:3.77vh;
+    margin-left:20vw;
+    top:90vh;
+    z-index: 1000000000;
+  }
+  .title-banner img {
+    width:60vw;
+  }
+  .bottom-banner img{
+    width:60vw;
+    z-index:100000000000000000;
+  }
+
 }
 </style>
 <div class="gradient">
