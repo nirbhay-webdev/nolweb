@@ -31,7 +31,7 @@
       </div>
 
 
-    <div id="live-data-container" class="container-fluid container-margin" ng-show="false">
+    <div id="live-data-container" class="container-fluid container-margin" ng-show="true">
         <div class="row info-bar-outer" id="live-data">
             <div class="info-bar info-bar-fixed" ng-hide="hideLivePreview">
                 <center>Live Preview</center>
@@ -39,6 +39,9 @@
         </div>
         <div class="row" ng-repeat="coloumnArray in liveDataStorage">
           <div class="card" ng-repeat="element in coloumnArray track by $index" ng-click="showPopup(element)" ng-hide="">
+            <div class="img-overlay">
+            </div>
+
             <div class="bg-img">
                     <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)" />
                     <div class="grad"></div>
@@ -85,6 +88,8 @@
         </div>
         <div class="row1">
             <div class="card" ng-repeat="element in historicalDataStorage " ng-click="showPopup(element)">
+              <div class="img-overlay">
+              </div>
                 <div class="bg-img">
                     <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)"/>
                     <div class="grad"></div>
