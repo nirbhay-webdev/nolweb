@@ -6,7 +6,7 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
                 $routeProvider.
                     when('/',{
                     templateUrl:'templates/venues.html',
-                    controller:'nolHomeController'
+                    controller:'nolWebController'
                     }).when('/venues',{
                     templateUrl: 'templates/venues.html',
                     controller:'nolWebController'

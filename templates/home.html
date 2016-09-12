@@ -27,7 +27,7 @@ width:100vw;
   padding-right:0px !important;
   margin-left:0px !important;
   margin-right:0px !important;
-background-color: rgba(0,0,0,.91);
+  background-color: rgba(0,0,0,.91);
 }
 .circle-1 {
   position:absolute;
@@ -100,21 +100,91 @@ background-color: rgba(0,0,0,.91);
 }
 
 .bar-upper img {
+  -webkit-transform: translateZ(0);
   margin-bottom:4.7vh;
   z-index:100000000000000000;
+  animation-name: mover;
+  animation-duration: 600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-delay: 300ms
+  animation-fill-mode: forwards;
+}
+
+@keyframes mover {
+  0%    {transform:translate(0,-15.5vh)}
+  25%   {transform: translate(0,0vh)}
+  50%   {transform: translate(0,17.82vh)}
+  59.6% {transform: translate(0,14.37vh)}
+  72.86% {transform: translate(0,9.67vh)}
+  84.56%  {transform: translate(0,5.55vh)}
+  98.03%  {transform: translate(0,0.85vh)}
+  100%    {transform: translate(0,0.0vh)}
+}
+
+.bar-lower img {
+  animation-name: mover2;
+  animation-duration: 600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+
+  animation-fill-mode: forwards;
+}
+@keyframes mover2 {
+  0%    {transform:translate(0,15.5vh)}
+  25%   {transform: translate(0,0vh)}
+  50%   {transform: translate(0,-17.82vh)}
+  59.6% {transform: translate(0,-14.37vh)}
+  72.86% {transform: translate(0,-9.67vh)}
+  84.56%  {transform: translate(0,-5.55vh)}
+  98.03%  {transform: translate(0,-0.85vh)}
+  100%    {transform: translate(0,0.0vh)}
 }
 
 .night img{
   margin-bottom: 4.7vh;
   z-index:100000000000000000;
+  animation-name: display;
+  animation-duration: 600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+
+  animation-fill-mode: forwards;
+}
+@keyframes display {
+  0%  {opacity:0}
+  25% {opacity:0}
+  50% {opacity:0}
+  72.86% {opacity:0}
+  84.56% {opacity:1}
+  100% {opacity:1}
 }
 .out img {
   margin-bottom: 4.7vh;
   z-index:100000000000000000;
+  animation-name: display2;
+  animation-duration: 600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+
+  animation-fill-mode: forwards;
+}
+
+@keyframes display2 {
+  0%  {opacity:0}
+  25% {opacity:0}
+  50% {opacity:0}
+  59.6% {opacity:1}
 }
 .loud img{
   margin-bottom: 4.7vh;
   z-index:100000000000000000;
+  animation-name: display;
+  animation-duration: 600ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+
+  animation-fill-mode: forwards;
 }
 .bottom-banner img{
   width:54.22vh;

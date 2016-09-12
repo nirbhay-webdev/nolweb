@@ -68,6 +68,7 @@ body {
     padding-left:27px !important;
     font-size:64px;
     padding-right:0px !important;
+    transition:font-size 300ms ease-in;
 }
 
 .menu-tab {
@@ -135,7 +136,7 @@ li {
 }
 
 .dot-outer {
-     animation-name: blinker;
+    animation-name: blinker;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -188,6 +189,7 @@ li {
     padding-top:12px;
     height:60px;
     margin-bottom:15px;
+    transition:top 150ms ease-in,width 300ms ease-in,margin-left 300ms ease-in;
 }
 
 .info-bar-fixed {
@@ -223,6 +225,7 @@ li {
 .card{
   transition:-webkit-box-shadow 300ms linear;
   transition:transform 300ms linear;
+  transition:position 300ms ease-in;
 }
 
 .card:hover{
@@ -356,15 +359,21 @@ li {
     height:17.5vw;
     /*margin-left:15px;*/
     position:absolute;
-
     overflow:hidden;
 
 }
 .bg-img > img {
+    -webkit-filter:blur(3px);
     z-index:100;
     position:absolute;
     width:50vw;
-    transition: width 2s ease-in,margin-left 2s ease-in,-webkit-box-shadow 2s linear;
+    transition: transform 300ms ease-in,-webkit-box-shadow 2s linear,-webkit-filter 300ms linear;
+}
+
+.bg-img > img:hover {
+   trasform:scale(1.01);
+   -webkit-filter:none;
+
 }
 
 .splash-screen {
