@@ -36,8 +36,8 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
     $scope.popupBtnClicked = false;
     $scope.venueToDisplayOnPopup = {};
     $rootScope.popupBtnClicked = false;
-    $scope.hideLivePreview = false;
     $scope.showMenuTabList = false;
+    $scope.rollUpSplashScreen = false;
 
     $scope.showMenuItems = function () {
 
@@ -69,18 +69,42 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
     $scope.variableInitializerOnPageLoad = function() {
 
-            window.addEventListener('scroll',doWhenUserScrolls);
+            $scope.showLiveDataSection = false;
+            $scope.showHistoricalDataSection=false;
             $scope.liveDataStorage = [];
             $scope.historicalDataStorage = [];
+            $scope.rollUpSplashScreen=false;
+            $scope.switchToVenuesPage=false;
 
             dataService.getData('data_type=current').then(doWhenLiveDataRecieved,doWhenError);
             dataService.getData('data_type=historical').then(doWhenHistoricalDataRecieved,doWhenError);
 
+            window.addEventListener('scroll',splashScrollScreen);
+
+            function splashScrollScreen (event){
+              console.log(event);
+              $('.splash-screen').addClass('roll-up-splash-screen');
+              window.removeEventListener('scroll',splashScrollScreen);
+              console.log('debugging the current event');
+            }
+
+            window.addEventListener("transitionend",afterRollingUpSplashScreen);
+
+            function afterRollingUpSplashScreen(event){
+              // $("#header-first-row").addClass('fixed-on-top');
+              // $('.venue-container').delay(2000).css('overflow-y','scroll');
+              $scope.switchToVenuesPage = true;
+              $scope.$apply();
+
+            }
+
             function doWhenLiveDataRecieved(response){
-                $scope.liveDataStorage = createArrayLayoutForVenues(response);
+                $scope.showLiveDataSection=true;
+                $scope.liveDataStorage = response;
                 var checkForLiveDataSize = $scope.liveDataStorage.length > 0;
                 if(checkForLiveDataSize){
-                        $scope.showLiveDataSection=true;
+                        console.log('triggering');
+                        $rootScope.showLiveDataSection=true;
                         $scope.dataAvailable = true;
                         $scope.showLoader = false;
                     }
@@ -98,108 +122,30 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             }
 
             function doWhenUserScrolls(event){
+                  var temp = $('#hist-data').offset();
+                  if(temp.top <= 170){
+                    console.log(temp);
+                    var opa =(temp.top - 110)/50;
+                    console.log(opa);
+                    $('.info-bar').first().css("opacity",opa);
+                    if(temp.top <= 110){
+                        $('#info-bar-inner').addClass('info-bar-fixed');
+                      console.log('not working');
+                    }
+                    else if(temp.top >= 110){
+                        $('#info-bar-inner').removeClass('info-bar-fixed');
+                    }
+                  }
 
-              var currentWindowScroll = window.scrollY;
-              var liveDataTagOffset = document.getElementById('live-data').offsetTop;
-              var histDataTagOffset = document.getElementById('hist-data').offsetTop;
-              var offsetDiff = histDataTagOffset - liveDataTagOffset;
-              // console.log(temp);
-              if(currentWindowScroll> offsetDiff){
-                // console.log('done');
-                $scope.hideLivePreview = true;
-                $scope.$apply();
-              }
-              if(currentWindowScroll < offsetDiff){
-                $scope.hideLivePreview = false;
-                $scope.$apply();
-              }
+
+
+
             }
     };
-//Method Specification Ends Here
-
-/*
-
-   createArrayLayoutForVenues function for converting one dimensional array to two dimensional array
-
-*/
-            function createArrayLayoutForVenues(oneDimArray){
-
-                var twoDimArray = [];
-                var trackerFor1DArray = 0;
-                var numberOfRowsFor2DArray=Math.ceil(oneDimArray.length/3);
-                var noOfColoumns = 3;
-                var tailOf1DArray = oneDimArray.length;
-                //
-                // var counter = 0;
-                // for(i = 0 ; i < numberOfRowsFor2DArray; i=i+3 ){
-                //     a[counter][i] = oneDimArray[i];
-                //     a[coutner][i+1] = oneDimArray[i+1];
-                //     a[counter][i+2] = oneDimArray[i+2];
-                //     counter++;
-                // }
-
-                for(var rowIndex=0; rowIndex < numberOfRowsFor2DArray; rowIndex++){
-
-                      twoDimArray[rowIndex]=[]; //Initializing every row as a new Array
-
-                        for (var coloumnIndex=0; coloumnIndex < noOfColoumns; coloumnIndex++){
-
-                            twoDimArray[rowIndex][coloumnIndex]={};
-                            twoDimArray[rowIndex][coloumnIndex]=oneDimArray[trackerFor1DArray];
-                            trackerFor1DArray++;
-
-                            if(trackerFor1DArray == tailOf1DArray){
-                                break;
-                            }
-                        }
-                    }
-                return twoDimArray;
-            }
 
     }]);
 // nolWebController Specification ends Here
 
-app.controller('nolHomeController',['$rootScope','$timeout','$interval','$location','$scope',function($rootScope,$timeout,$interval,$location,$scope){
-
-      $rootScope.showLiveDataSection = false;
-      $rootScope.showHistoricalDataSection= false;
-      $rootScope.rollUpSplashScreen = false;
-
-
-      $scope.homeInitializer = function(){
-          $rootScope.switchToVenuesPage=false;
-          window.addEventListener('scroll',splashScrollScreen);
-          // $timeout(scrollToVenues,3000);
-
-          function splashScrollScreen (event){
-
-
-            // window.scrollTo(0,0);
-            console.log(event);
-            $rootScope.showLiveDataSection = true;
-            $rootScope.showHistoricalDataSection= true;
-            $rootScope.rollUpSplashScreen = true;
-
-            $timeout(function(){
-              window.scrollTo(0,0);
-              $('.venue-container').css('overflow-y','scroll');
-              $rootScope.switchToVenuesPage = true;
-            },2000);
-            window.removeEventListener('scroll',splashScrollScreen);
-            console.log('debugging the current event');
-          }
-          function scrollToVenues () {
-             var event = new Event('scroll');
-             window.dispatchEvent(event);
-             window.removeEventListener('scroll',splashScrollScreen);
-          }
-      };
-
-        $rootScope.switchToVenuesPage = false;
-        $scope.showLoader=false;
-
-
-    }]);
 
 
 

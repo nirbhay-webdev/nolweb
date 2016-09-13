@@ -1,11 +1,11 @@
-<div ng-include="'templates/home.html'" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
+<div ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
 
-<div class="venue-container"   ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
+<div ng-include="'templates/home.html'" id ="splash-screen" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
 
+<div class="venue-container">
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
-
-    <div class="container-fluid header" ng-show="rollUpSplashScreen">
-        <div class="row" ng-class="{'fixed-on-top':switchToVenuesPage}">
+    <div class="container-fluid header">
+        <div class="row" id="header-first-row" ng-class="{'fixed-on-top':switchToVenuesPage}">
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                 <div class="header-title">#NOL</div>
             </div>
@@ -17,11 +17,11 @@
 
                   <div class="menu-tab-list-hidden" ng-class="{'menu-tab-list':showMenuTabList}">
                     <ul style="color:white">
-                        <li ng-class="{'li-active':li-selected == 'live-data'}"><a ng-href="#/venues" ng-click="li-selected = 'live-data'">      Live Data   </a></li>
-                        <li ng-class="{'li-active':li-selected == 'app'}"><a ng-href="#/app" ng-click="li-selected = 'app'">         App         </a></ling-class>
-                        <li ng-class="{'li-active':li-selected == 'about-us'}"><a ng-href="#/about-us" ng-click="li-selected = 'about-us'">    About Us    </a></li>
-                        <li ng-class="{'li-active':li-selected == 'ambassador'}"><a ng-href="#/ambassador" ng-click="li-selected = 'ambassador'">  Ambassador  </a></li>
-                        <li ng-class="{'li-active':li-selected == 'contact'}"><a ng-href="#/contact-us" ng-click="li-selected = 'contact'">  Contact     </a> </li>
+                        <li><a ng-href="#/venues">      Live Data   </a></li>
+                        <li><a ng-href="#/app">         App         </a></ling-class>
+                        <li><a ng-href="#/about-us">    About Us    </a></li>
+                        <li><a ng-href="#/ambassador">  Ambassador  </a></li>
+                        <li><a ng-href="#/contact-us">  Contact     </a> </li>
                     </ul>
                   </div>
 
@@ -29,16 +29,27 @@
             </div>
         </div>
       </div>
-
-
-    <div id="live-data-container" class="container-fluid container-margin" ng-show="true">
-        <div class="row info-bar-outer" id="live-data">
-            <div class="info-bar info-bar-fixed" ng-hide="hideLivePreview">
-                <center>Live Preview</center>
+      <div class="container-fluid" style="padding-left:0px;" ng-show="switchToVenuesPage">
+        <div class="row info-bar-outer" id="hist-data">
+            <div id="info-bar-inner" class="info-bar info-bar-fixed">
+                <div class="col-lg-6">
+                <center>
+                  <a ng-click="showLiveDataSection = true" style="text-decoration:none;cursor:pointer;color:black">Live Now</a>
+                </center>
+                </div>
+                <div class="col-lg-6">
+                  <center>
+                  <a ng-click="showLiveDataSection = false" style="text-decoration:none;cursor:pointer;color:black"> Offline</a>
+                  </center>
+                </div>
             </div>
         </div>
-        <div class="row" ng-repeat="coloumnArray in liveDataStorage">
-          <div class="card" ng-repeat="element in coloumnArray track by $index" ng-click="showPopup(element)" ng-hide="">
+      </div>
+</div>
+    <div id="live-data-container" class="container-fluid container-margin" ng-show="showLiveDataSection">
+
+        <div class="row1">
+          <div class="card" ng-repeat="element in liveDataStorage" ng-click="showPopup(element)" ng-hide="">
             <div class="img-overlay">
             </div>
 
@@ -66,26 +77,22 @@
                     </div>
                 </div>
                 <div class="three-text-box">
-                    <div class="text-box">
-                        <span class="text-box-tag vibe">VIBE</span><br><span class="text-box-value">{{element.vibe}}</span>
+                    <div class="text-box" style="width:33%">
+                        <span class="text-box-tag" >VIBE</span><span class="text-box-value">{{element.vibe}}</span>
                     </div>
-                    <div class="text-box">
-                        <span class="text-box-tag music-genre">MUSIC GENRE</span><br><span class="text-box-value">{{element.genre}}</span>
+                    <div class="text-box" style="width:33%">
+                        <span class="text-box-tag">MUSIC GENRE</span><span class="text-box-value">{{element.genre}}</span>
                     </div>
-                    <div class="text-box">
-                        <span class="text-box-tag music-type">MUSIC TYPE</span><br><span class="text-box-value">{{element.type}}</span>
+                    <div class="text-box" style="width:33%">
+                        <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <div id="live-data-container" class="container-fluid container-margin" ng-show="showHistoricalDataSection">
-        <div class="row info-bar-outer" id="hist-data">
-            <div class="info-bar info-bar-fixed" ng-show="switchToVenuesPage">
-                <center>Projections For Today</center>
-            </div>
-        </div>
+    <div id="hist-data-container" class="container-fluid container-margin" ng-show="!showLiveDataSection">
+
         <div class="row1">
             <div class="card" ng-repeat="element in historicalDataStorage " ng-click="showPopup(element)">
               <div class="img-overlay">
@@ -114,15 +121,15 @@
                     </div>
                 </div>
                 <div class="three-text-box">
-                    <div class="text-box">
-                        <span class="text-box-tag vibe">VIBE</span>
-                        <span class="text-box-value vibe">{{element.vibe}}</span>
+                    <div class="text-box" style="width:30%">
+                        <span class="text-box-tag">VIBE</span>
+                        <span class="text-box-value" >{{element.vibe}}</span>
                     </div>
-                    <div class="text-box">
-                        <span class="text-box-tag music-genre">MUSIC GENRE</span><span class="text-box-value music-genre">{{element.genre}}</span>
+                    <div class="text-box" style="width:33%">
+                        <span class="text-box-tag">MUSIC GENRE</span><span class="text-box-value" >{{element.genre}}</span>
                     </div>
-                    <div class="text-box">
-                        <span class="text-box-tag music-type">MUSIC TYPE</span><span class="text-box-value music-type">{{element.type}}</span>
+                    <div class="text-box" style="width:33%">
+                        <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
                     </div>
                 </div>
             </div>

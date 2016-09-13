@@ -5,34 +5,34 @@
                 <div style="margin-top:10px;margin-right:10px;">
                 <button type="button" class="close" aria-label="Close"><span aria-hidden="true" style="font-size:26px;" ng-click="modalShow = false">&times;</span></button>
                 </div>
-                <form class="form-horizontal" style="margin-left:15%; margin-top:20%; color:white!important;">
+                <form class="form-horizontal" style="margin-left:15%; margin-top:20%; color:white!important;"action="//github.us14.list-manage.com/subscribe/post?u=e5a2eb5745dab5fd9008b3309&amp;id=332eb6d244" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <div class="form-group">
                         <div class="col-sm-5">
                             <label for="contact_no">First Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="John/Jane" ng-model="intern.firstName">
+                        <input type="text" class="form-control" name="FNAME"id="first_name" placeholder="John/Jane" ng-model="intern.firstName">
                         </div>
                         <div class="col-sm-5">
                             <label for="contact_no">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder="Doe" ng-model="intern.lasttName">
+                        <input type="text" class="form-control" name="LNAME" id="last_name" placeholder="Doe" ng-model="intern.lasttName">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                             <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="john@example.com" ng-model="intern.email">
+                        <input type="email" class="form-control" name="EMAIL" id="email" placeholder="john@example.com" ng-model="intern.email">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                         <label for="contact_no">Phone No.</label>
-                        <input type="number" class="form-control" id="contact_no" placeholder="+91 99999 00000" ng-model="intern.contactNo">
+                        <input type="number" class="form-control" name="PHONENO" id="contact_no" placeholder="+91 99999 00000" ng-model="intern.contactNo">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
                             <label for="answer">Why do you think you are perfect for this job?</label>
 
-                        <input type="text" style="height:60px;" class="form-control" id="answer" placeholder="Answer" ng-model="intern.answer">
+                        <input type="text" style="height:60px;" name="BODY" class="form-control" id="answer" placeholder="Answer" ng-model="intern.answer">
                         </div>
                     </div>
                      <!-- <div class="form-group">
@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10" style="margin-left:30%">
-                        <button type="submit" class="btn btn-primary btn-lg" ng-click="registerIntern()">Send</button>
+                          <button type="submit" class="btn btn-primary btn-lg" name="subscribe">Send</button>
                         </div>
                     </div>
                 </form>

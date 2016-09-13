@@ -28,7 +28,7 @@ app.service('dataService',['$q','$http',function($q,$http){
 
          function Mapper (response) {
 
-            musicType =['Bollywood','Electronic','Rock','Pop/Commercial'];
+            musicType =['Bollywood','Electronic','Rock','Pop'];
             musicSource=['Speakers','In House DJ','Special DJ','Karaoke','Live Band'];
             placeVibe = ['Chill','Upbeat','Dancing'];
             var data = [];

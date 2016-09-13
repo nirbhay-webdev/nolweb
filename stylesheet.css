@@ -24,12 +24,23 @@ body {
     width:100vw;
     height:100vh;
 }
-
-
+.splash-screen {
+  width:100vw;
+  height:100vh;
+  margin:0px auto;
+  padding:0px auto;
+  position:relative;
+  /*border:1px solid white;*/
+  transition: margin-top 500ms ease-in;
+  overflow:visible;
+}
+.roll-up-splash-screen {
+  margin-top:-100vh;
+}
 
 .venue-container{
   width:100vw;
-  height:100vh;
+  height:auto;
   overflow-y:hidden;
 }
 
@@ -177,6 +188,7 @@ li {
   height:60px;
   padding:0px auto
   margin:0px auto;
+  /* margin-bottom:15px; */
 }
 
 .info-bar {
@@ -188,7 +200,7 @@ li {
     font-size:24px;
     padding-top:12px;
     height:60px;
-    margin-bottom:15px;
+
     transition:top 150ms ease-in,width 300ms ease-in,margin-left 300ms ease-in;
 }
 
@@ -205,7 +217,7 @@ li {
   padding-right: 0px;
   margin-left:auto;
   margin-right:auto;
-  height: 100%;
+  height: 100vh;
 }
 
 .card {
@@ -320,17 +332,20 @@ li {
     position:relative;
     float:left;
 
-    width:145px;
     height:inherit;
     padding-top:10px;
     line-height: 25px !important;
 }
 .text-box-tag {
     font-size:12px;
+    text-align: center;
+    display: block;
 }
 
 .text-box-value {
     font-size:16px;
+    text-align: center;
+    display: block;
 }
 
 .vibe {
@@ -434,30 +449,12 @@ z-index:10000000;
   z-index:10000000;
 }
 .img-set {
-  margin-left:40px; 
+  margin-left:40px;
 }
 .img-set>img {
   width:400px;
 
 }
-
-
-
-.splash-screen {
-  width:100vw;
-  height:100vh;
-  margin:0px auto;
-  padding:0px auto;
-  position:relative;
-  /*border:1px solid white;*/
-  transition: margin-top 2s ease-in;
-}
-.roll-up-splash-screen {
-  margin-top:-100vh;
-
-}
-
-
 
 .popup-table > td {
   font-family:'Montserrat',sans-serif;
@@ -544,9 +541,7 @@ z-index:10000000;
       height:60px;
       /*border:1px solid white;*/
       /*border-radius:5px;*/
-
-      margin-bottom:15px;
-
+      /* margin-bottom:15px; */
   }
   .card-title {
       position:absolute;
@@ -645,6 +640,7 @@ z-index:10000000;
 
   .text-box-value {
       font-size:1.11vw;
+      text-align: center;
   }
 
   .bg-img {
@@ -760,6 +756,7 @@ z-index:10000000;
   }
   .text-box-value {
       font-size:12px;
+      text-align: center;
   }
 
   .vibe {
@@ -1116,6 +1113,7 @@ li {  width: auto;
 
     .text-box-value {
       font-size:3.46vw;
+      text-align: center;
     }
 
     .vibe {
