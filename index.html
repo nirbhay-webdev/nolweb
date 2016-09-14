@@ -13,15 +13,40 @@
         function preloader(){
           $('body').css('visbility','hidden');
 
-          var images = new Image();
-          images.src = 'assets/home-page-image-assets/circle1.png';
-          images.src = 'assets/home-page-image-assets/circle2.png';
-          images.src = 'assets/home-page-image-assets/circle3.png';
-          images.onload = function () {
-              // alert('images loaded');
-              $('body').css('visibility','visible');
+         var image1 = new Image();
+         var image2 = new Image();
+         var image3 = new Image();
+         image1 = 'assets/home-page-image-assets/circle3.png';
+         image2 = 'assets/home-page-image-assets/circle2.png';
+         image3 = 'assets/home-page-image-assets/circle1.png';
 
-          }
+         image1.onload = function () {
+           // alert('images loaded');
+           image1_loaded = true;
+           if (image2_loaded && image3_loaded) {
+              $('body').css('visibility','visible');
+           }
+
+         }
+
+         image2.onload = function () {
+           // alert('images loaded');
+           image2_loaded = true;
+           if (image1_loaded && image3_loaded) {
+              $('body').css('visibility','visible');
+           }
+
+         }
+
+         image3.onload = function () {
+           // alert('images loaded');
+           image3_loaded = true;
+           if (image1_loaded && image2_loaded) {
+              $('body').css('visibility','visible');
+           }
+         }
+
+
         }
         </script>
         <script src="js/jquery.min.js"></script>
