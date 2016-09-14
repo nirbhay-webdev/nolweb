@@ -6,6 +6,7 @@
         <title>NOL</title>
         <script type="text/javascript">
         function preloader(){
+            $('body').css('display','none');
           var image1 = new Image();
           var image2 = new Image();
           var image3 = new Image();
@@ -19,7 +20,8 @@
 
             image1_loaded = true;
             if (image2_loaded && image3_loaded) {
-               $('body').css('visibility','visible');
+              console.log('yup');
+               setTimeout(function(){$('body').css('display','block');},4000);
             }
 
           }
@@ -28,7 +30,8 @@
 
             image2_loaded = true;
             if (image1_loaded && image3_loaded) {
-               $('body').css('visibility','visible');
+              console.log('yup');
+              setTimeout(function(){$('body').css('display','block');},4000);
             }
 
           }
@@ -37,10 +40,11 @@
 
             image3_loaded = true;
             if (image1_loaded && image2_loaded) {
-               $('body').css('visibility','visible');
+              console.log('yup');
+              setTimeout(function(){$('body').css('display','block');},4000);
             }
           }
-          $('body').css('visbility','hidden');
+
 
 
          image1.src = 'assets/home-page-image-assets/circle3.png';
