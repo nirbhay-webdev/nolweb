@@ -6,40 +6,42 @@
         <title>NOL</title>
         <script type="text/javascript">
         function preloader(){
+          var image1 = new Image();
+          var image2 = new Image();
+          var image3 = new Image();
+          image1.onload = function () {
+
+            image1_loaded = true;
+            if (image2_loaded && image3_loaded) {
+               $('body').css('visibility','visible');
+            }
+
+          }
+
+          image2.onload = function () {
+
+            image2_loaded = true;
+            if (image1_loaded && image3_loaded) {
+               $('body').css('visibility','visible');
+            }
+
+          }
+
+          image3.onload = function () {
+
+            image3_loaded = true;
+            if (image1_loaded && image2_loaded) {
+               $('body').css('visibility','visible');
+            }
+          }
           $('body').css('visbility','hidden');
 
-         var image1 = new Image();
-         var image2 = new Image();
-         var image3 = new Image();
+
          image1 = 'assets/home-page-image-assets/circle3.png';
          image2 = 'assets/home-page-image-assets/circle2.png';
          image3 = 'assets/home-page-image-assets/circle1.png';
 
-         image1.onload = function () {
 
-           image1_loaded = true;
-           if (image2_loaded && image3_loaded) {
-              $('body').css('visibility','visible');
-           }
-
-         }
-
-         image2.onload = function () {
-
-           image2_loaded = true;
-           if (image1_loaded && image3_loaded) {
-              $('body').css('visibility','visible');
-           }
-
-         }
-
-         image3.onload = function () {
-
-           image3_loaded = true;
-           if (image1_loaded && image2_loaded) {
-              $('body').css('visibility','visible');
-           }
-         }
 
 
         }
