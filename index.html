@@ -9,6 +9,15 @@
         <link rel="stylesheet" href="assets/fonts/avenir-next-lt-pro/style.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script type="text/javascript">
+        function preloader(){
+          var images = new Image();
+          images.src = 'assets/home-page-image-assets/circle1.png';
+          images.src = 'assets/home-page-image-assets/circle2.png';
+          images.src = 'assets/home-page-image-assets/circle3.png';
+
+        }
+        </script>
         <script src="js/jquery.min.js"></script>
         <script src="js/image-list.js"></script>
         <script src="js/list.js"></script>
@@ -19,6 +28,6 @@
         <script src="js/app.js"></script>
         <title>NOL</title>
     </head>
-    <body ng-view ng-class="{'body-overflow':popupBtnClicked}" ng-cloak>
+    <body onload="javascript:preloader()" ng-view ng-class="{'body-overflow':popupBtnClicked}" ng-cloak>
     </body>
 </html>
