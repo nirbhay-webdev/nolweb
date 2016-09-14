@@ -1,6 +1,6 @@
 
 
-var app = angular.module('nolWeb',['ngRoute','nolWeb-Services','ngAnimate']);
+var app = angular.module('nolWeb',['ngRoute','nolWeb-Services']);
 
 app.config(['$locationProvider','$routeProvider',function config($locationProvider,$routeProvider){
                 $routeProvider.
