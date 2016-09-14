@@ -99,12 +99,12 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             }
 
             function doWhenLiveDataRecieved(response){
-                $scope.showLiveDataSection=true;
+                $scope.showLiveDataSection=false;
                 $scope.liveDataStorage = response;
                 var checkForLiveDataSize = $scope.liveDataStorage.length > 0;
                 if(checkForLiveDataSize){
                         console.log('triggering');
-                        $rootScope.showLiveDataSection=true;
+                        $scope.showLiveDataSection=true;
                         $scope.dataAvailable = true;
                         $scope.showLoader = false;
                     }

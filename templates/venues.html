@@ -2,7 +2,7 @@
 
 <div ng-include="'templates/home.html'" id ="splash-screen" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
 
-<div class="venue-container">
+<div class="venue-container" ng-show="switchToVenuesPage">
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
     <div class="container-fluid header">
         <div class="row" id="header-first-row" ng-class="{'fixed-on-top':switchToVenuesPage}">
