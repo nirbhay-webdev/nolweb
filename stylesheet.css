@@ -14,6 +14,10 @@ font-style: normal;
 font-weight: normal;
 src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
 }
+
+.notransition{
+  transition:none !important;
+}
 .loader-new {
    position:absolute;
    width:100vw;
@@ -29,11 +33,12 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
    background-repeat: no-repeat,no-repeat;
 }
 .loader{
-   position:absolute;
+   display:block !important;
+   position:fixed;
    width:100vw;
    height:100vh;
    left:0;
-   top:140px;
+   top:100vh;
    background:white;
    z-index:100000000;
    overflow-y:hidden;
@@ -117,6 +122,11 @@ body {
     width:100vw;
     height:100vh;
 }
+#ctrl{
+  width:100vw;
+  height:100vh;
+  transition: transform 1500ms ease-in;
+}
 .splash-screen {
   width:100vw;
   height:100vh;
@@ -124,16 +134,16 @@ body {
   padding:0px auto;
   position:relative;
   /*border:1px solid white;*/
-  transition: margin-top 500ms ease-in;
+
   overflow:visible;
 }
 .roll-up-splash-screen {
-  margin-top:-100vh;
+  transform:translateY(-100vh);
 }
 
 .venue-container{
   width:100vw;
-  height:auto;
+  height:100vh;
   overflow-y:hidden;
 }
 
@@ -219,9 +229,6 @@ li {
     border-bottom:none;
 
 }
-
-
-
 a:hover {
     border-bottom:solid 2px rgba(0,0,0,1);
 }

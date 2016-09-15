@@ -1,8 +1,8 @@
-<div ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
-  
-<div ng-include="'templates/home.html'" id ="splash-screen" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
+<div id="ctrl" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
 
-<div class="venue-container" ng-show="switchToVenuesPage">
+<div ng-include="'templates/home.html'" id ="splash-screen" class="splash-screen" ng-hide="switchToVenuesPage"></div>
+
+<div class="venue-container">
 
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
     <div class="container-fluid header">
@@ -18,7 +18,7 @@
 
                   <div class="menu-tab-list-hidden" ng-class="{'menu-tab-list':showMenuTabList}">
                     <ul style="color:white">
-                        <li><a ng-href="#/venues">      Live Data   </a></li>
+                        <li><a ng-href="#/venues" ng-click="function(){switchLoader();$timeout(switchLoader,1000}">      Live Data   </a></li>
                         <li><a ng-href="#/app">         App         </a></ling-class>
                         <li><a ng-href="#/about-us">    About Us    </a></li>
                         <li><a ng-href="#/ambassador">  Ambassador  </a></li>
@@ -41,7 +41,7 @@
           </div>
                   </div>
       </div>
-</div>
+
 
     <div id="hist-data-container" class="container-fluid container-margin" ng-show="!showLiveDataSection">
       <div class="loader" ng-show="showLoader">
@@ -95,4 +95,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

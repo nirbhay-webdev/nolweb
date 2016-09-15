@@ -71,7 +71,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
     $scope.variableInitializerOnPageLoad = function() {
             $scope.showLoaderNew = true;
-            $timeout(function(){$scope.showLoaderNew=false;},2000); 
+            $timeout(function(){$scope.showLoaderNew=false;},2000);
             $scope.showLiveDataSection = false;
             $scope.showHistoricalDataSection=false;
             $scope.Data = [];
@@ -87,7 +87,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
             function splashScrollScreen (event){
               console.log(event);
-              $('.splash-screen').addClass('roll-up-splash-screen');
+              $('#ctrl').addClass('roll-up-splash-screen');
               window.removeEventListener('scroll',splashScrollScreen);
               console.log('debugging the current event');
             }
@@ -95,8 +95,9 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             window.addEventListener("transitionend",afterRollingUpSplashScreen);
 
             function afterRollingUpSplashScreen(event){
-              // $("#header-first-row").addClass('fixed-on-top');
-              // $('.venue-container').delay(2000).css('overflow-y','scroll');
+              $('#ctrl').addClass('notransition')
+              $('#ctrl').removeClass('roll-up-splash-screen');
+              $('.venue-container').delay(2000).css('overflow-y','scroll');
               $scope.switchToVenuesPage = true;
               $scope.$apply();
 
