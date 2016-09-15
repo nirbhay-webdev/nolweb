@@ -1,11 +1,12 @@
 <div ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
-
+  
 <div ng-include="'templates/home.html'" id ="splash-screen" class="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" ng-hide="switchToVenuesPage"></div>
 
 <div class="venue-container" ng-show="switchToVenuesPage">
+
     <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
     <div class="container-fluid header">
-        <div class="row" id="header-first-row" ng-class="{'fixed-on-top':switchToVenuesPage}">
+        <div class="row" id="header-first-row" >
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                 <div class="header-title">#NOL</div>
             </div>
@@ -29,72 +30,31 @@
             </div>
         </div>
       </div>
-      <div class="container-fluid" style="padding-left:0px;" ng-show="switchToVenuesPage">
-        <div class="row info-bar-outer" id="hist-data">
-            <div id="info-bar-inner" class="info-bar info-bar-fixed">
-                <div class="col-lg-6">
-                <center>
-                  <a ng-click="showLiveDataSection = true" style="text-decoration:none;cursor:pointer;color:black">Live Now</a>
-                </center>
-                </div>
-                <div class="col-lg-6">
-                  <center>
-                  <a ng-click="showLiveDataSection = false" style="text-decoration:none;cursor:pointer;color:black"> Offline</a>
-                  </center>
-                </div>
-            </div>
-        </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <label class="switch" >
+                <input type="checkbox" ng-model="whichData" ng-click="showData(whichData)">
+                <div class="slider round"></div>
+            </label>
+
+          </div>
+                  </div>
       </div>
 </div>
-    <div id="live-data-container" class="container-fluid container-margin" ng-show="showLiveDataSection">
 
-        <div class="row1">
-          <div class="card" ng-repeat="element in liveDataStorage" ng-click="showPopup(element)" ng-hide="">
-            <div class="img-overlay">
-            </div>
-
-            <div class="bg-img">
-                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)" />
-                    <div class="grad"></div>
-            </div>
-                <div class="card-title">{{element.venue}}</div>
-                <div class="mini-card-box">
-                    <div class="mini-cards mini-card-people">
-                        <span class="mini-cards-tag">PEOPLE</span><br>
-                        <span class="mini-cards-value">{{element.people}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-males">
-                        <span class="mini-cards-tag"> MALES</span><br>
-                        <span class="mini-cards-value">{{element.male}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-female">
-                        <span class="mini-cards-tag"> FEMALES</span><br>
-                        <span class="mini-cards-value">{{element.female}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-fullness">
-                        <span class="mini-cards-tag">FULLNESS</span><br>
-                        <span class="mini-cards-value">{{element.fullness}}</span>
-                    </div>
-                </div>
-                <div class="three-text-box">
-                    <div class="text-box" style="width:33%">
-                        <span class="text-box-tag" >VIBE</span><span class="text-box-value">{{element.vibe}}</span>
-                    </div>
-                    <div class="text-box" style="width:33%">
-                        <span class="text-box-tag">MUSIC GENRE</span><span class="text-box-value">{{element.genre}}</span>
-                    </div>
-                    <div class="text-box" style="width:33%">
-                        <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
     <div id="hist-data-container" class="container-fluid container-margin" ng-show="!showLiveDataSection">
+      <div class="loader" ng-show="showLoader">
 
-        <div class="row1">
-            <div class="card" ng-repeat="element in historicalDataStorage " ng-click="showPopup(element)">
+      </div>
+      <div class="row">
+        <div class="col-lg-12" ng-show=" Data.length == 0">
+            <span class="row" style="font-size:24px; display:block;vertical-align:middle;width:100%; text-align:center; margin-left:auto;margin-right:auto;height:100%;padding-top:15%; font-family:'Montserrat',sans-serif;">  We will be live between 7PM and 12PM everyday.<br />
+              You can switch over to see our daily projections</span>
+        </div>
+      </div>
+        <div class="row1" ng-hide="Data.length == 0">
+            <div class="card" ng-repeat="element in Data " ng-click="showPopup(element)">
               <div class="img-overlay">
               </div>
                 <div class="bg-img">

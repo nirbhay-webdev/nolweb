@@ -28,8 +28,8 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
     }]);
 
 app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService',function($scope,$rootScope,$timeout,dataService){
-
-    $scope.showLoader = true;
+    $scope.showLoaderNew = false;
+    $scope.showLoader = false;
     $scope.dataAvailable = false;
     $scope.showLiveDataSection = false;
     $scope.showHistoricalDataSection = false;
@@ -38,6 +38,8 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
     $rootScope.popupBtnClicked = false;
     $scope.showMenuTabList = false;
     $scope.rollUpSplashScreen = false;
+    $scope.whichData = false;
+    $scope.Data = [];
 
     $scope.showMenuItems = function () {
 
@@ -68,14 +70,16 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 //On Page Load Variable Initiazlizer Function Specification
 
     $scope.variableInitializerOnPageLoad = function() {
-
+            $scope.showLoaderNew = true;
+            $timeout(function(){$scope.showLoaderNew=false;},2000); 
             $scope.showLiveDataSection = false;
             $scope.showHistoricalDataSection=false;
+            $scope.Data = [];
             $scope.liveDataStorage = [];
             $scope.historicalDataStorage = [];
             $scope.rollUpSplashScreen=false;
             $scope.switchToVenuesPage=false;
-
+            $scope.whichData=false;
             dataService.getData('data_type=current').then(doWhenLiveDataRecieved,doWhenError);
             dataService.getData('data_type=historical').then(doWhenHistoricalDataRecieved,doWhenError);
 
@@ -113,7 +117,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             function doWhenHistoricalDataRecieved (response){
                  $scope.historicalDataStorage = response;
                  $scope.showHistoricalDataSection = true;
-                 $scope.showLoader=false;
+                 $scope.Data = response;
                  console.log($scope.historicalDataStorage);
 
             }
@@ -136,11 +140,24 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
                         $('#info-bar-inner').removeClass('info-bar-fixed');
                     }
                   }
-
-
-
-
             }
+            $scope.showData=function(whichData){
+                  console.log(whichData);
+                  if(whichData){
+                    $scope.Data = $scope.liveDataStorage;
+                    $scope.switchLoader();
+                    $timeout($scope.switchLoader,1000);
+                  }
+                  else{
+                    $scope.Data = $scope.historicalDataStorage;
+                    $scope.switchLoader();
+                    $timeout($scope.switchLoader,1000);
+                  }
+            };
+
+            $scope.switchLoader= function(){
+              $scope.showLoader = !$scope.showLoader;
+            };
     };
 
     }]);
