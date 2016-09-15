@@ -6,6 +6,7 @@
         <title>NOL</title>
         <script type="text/javascript">
         function preloader(){
+          if(window.location.hash == '#/' || window.location.hash == '#/venues' ){
           $('.loader-new').css('display','block');
             $('#view').css('display','none');
            var image = new Image();
@@ -58,10 +59,10 @@
          image4.src = 'assets/home-page-image-assets/Out.png';
          image5.src = 'assets/home-page-image-assets/bar-upper.png';
          image6.src = 'assets/home-page-image-assets/bar-lower.png';
-
-
-
-
+       }
+       else{
+         $('.loader-new').css('display','none');
+       }
         }
         </script>
         <link href="stylesheet.css" rel="stylesheet">
