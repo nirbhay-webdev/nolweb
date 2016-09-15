@@ -7,7 +7,7 @@
         <script type="text/javascript">
         function preloader(){
           $('.loader-new').css('display','block');
-            $('body').css('display','none');
+            $('#view').css('display','none');
            var image = new Image();
           var image1 = new Image();
           var image2 = new Image();
@@ -24,7 +24,7 @@
             if (image2_loaded && image3_loaded) {
               console.log('yup');
 
-               setTimeout(function(){$('.loader-new').css('display','none');$('body').css('display','block');},1500);
+               setTimeout(function(){$('.loader-new').css('display','none');$('#view').css('display','block');},1500);
             }
 
           }
@@ -35,7 +35,7 @@
             if (image1_loaded && image3_loaded) {
               console.log('yup');
 
-              setTimeout(function(){$('.loader-new').css('display','none');$('body').css('display','block');},1500);
+              setTimeout(function(){$('.loader-new').css('display','none');$('#view').css('display','block');},1500);
             }
 
           }
@@ -46,7 +46,7 @@
             if (image1_loaded && image2_loaded) {
               console.log('yup');
 
-              setTimeout(function(){$('.loader-new').css('display','none');$('body').css('display','block');},1500);
+              setTimeout(function(){$('.loader-new').css('display','none');$('#view').css('display','block');},1500);
             }
           }
 
@@ -71,7 +71,13 @@
 
         <title>NOL</title>
     </head>
-    <body onload="preloader()" ng-view ng-class="{'body-overflow':popupBtnClicked}" ng-cloak>
+    <body onload="preloader()">
+      <div class="loader-new" >
+
+      </div>
+      <div id="view" ng-view ng-class="{'body-overflow':popupBtnClicked}" ng-cloak>
+
+      </div>
       <script src="js/jquery.min.js"></script>
       <script src="js/image-list.js"></script>
       <script src="js/list.js"></script>
