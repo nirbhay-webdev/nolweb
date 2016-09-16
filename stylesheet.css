@@ -14,7 +14,12 @@ font-style: normal;
 font-weight: normal;
 src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
 }
-
+.bob li a{
+  color:rgba(0,0,0,0.8) !important;
+}
+.bob li a:hover{
+  border-bottom:2px solid rgba(0,0,0,0.8) !important;
+}
 .notransition{
   transition:none !important;
 }
