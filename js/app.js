@@ -59,7 +59,6 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
     $scope.showPopup = function(venueToDisplay){
         $scope.venueToDisplayOnPopup = venueToDisplay;
         $scope.popupBtnClicked = true;
-        // console.log('popup function invoked');
         $rootScope.popupBtnClicked=true;
     };
 
@@ -87,7 +86,9 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
             function splashScrollScreen (event){
               console.log(event);
-              $('#ctrl').addClass('roll-up-splash-screen');
+              // $('#ctrl').addClass('roll-up-splash-screen');
+              $scope.rollUpSplashScreen=true;
+              $scope.$apply();
               window.removeEventListener('scroll',splashScrollScreen);
               console.log('debugging the current event');
             }
@@ -95,9 +96,8 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             window.addEventListener("transitionend",afterRollingUpSplashScreen);
 
             function afterRollingUpSplashScreen(event){
-              $('#ctrl').addClass('notransition')
-              $('#ctrl').removeClass('roll-up-splash-screen');
-              $('.venue-container').delay(2000).css('overflow-y','scroll');
+
+              $('.venue-container').delay(1500).css('overflow-y','scroll');
               $scope.switchToVenuesPage = true;
               $scope.$apply();
 
@@ -163,7 +163,9 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
     }]);
 // nolWebController Specification ends Here
+app.controller('nolAppController',['$scope',function($scope){
 
+}]);
 
 
 

@@ -38,7 +38,7 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
    width:100vw;
    height:100vh;
    left:0;
-   top:100vh;
+   top:140px;
    background:white;
    z-index:100000000;
    overflow-y:hidden;
@@ -51,7 +51,7 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
   position: relative;
   float:right;
   display: block;
-  width: 60px;
+  width: 107px;
   height: 34px;
   overflow:hidden;
 }
@@ -59,6 +59,12 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
 .switch input {display:none;}
 
 .slider {
+  padding-left:4px;
+  padding-top: 5px;
+  vertical-align: middle;
+  color:white;
+  font-family: 'Source Sans Pro',sans-serif;
+  font-size:18px;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -72,17 +78,18 @@ src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') forma
 
 .slider:before {
   font-size:14px;
-  font:sans-serif;
+  font-family: sans-serif;
   position: absolute;
   content: "";
   height: 26px;
-  width: 26px;
+  width: 47px;
   left: 4px;
   bottom: 4px;
   text-align:center;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  /* transform: skewY(6deg); */
 }
 
 input:checked + .slider {
@@ -96,7 +103,7 @@ input:focus + .slider {
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(52px);
 }
 input:checked + .slider:after {
   -webkit-transform: translateX(26px);
@@ -125,20 +132,30 @@ body {
 #ctrl{
   width:100vw;
   height:100vh;
-  transition: transform 1500ms ease-in;
+  transition: transform 1500ms ease-out;
+}
+.splash-screen-outer{
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+
 }
 .splash-screen {
+  background:black;
   width:100vw;
-  height:100vh;
+  height:101vh;
   margin:0px auto;
   padding:0px auto;
   position:relative;
   /*border:1px solid white;*/
-
+  position:relative;
+  transition:transform 1500ms ease-in;
   overflow:visible;
+  z-index:1000000000000000;
 }
 .roll-up-splash-screen {
-  transform:translateY(-100vh);
+  transform:translateY(-101vh);
 }
 
 .venue-container{
@@ -513,44 +530,61 @@ z-index:10000000;
   z-index:10000000000;
 }
 
-.bg-overlay{
-  position:absolute;
-  top:110px;
-  background:rgba(0,0,0,0.6);
-  z-index:10000;
-  width:100%;
-  height:610px;
+.first-row{
+  height:400px;
 }
 
+
 .sub-title-text {
+
   font-size:24px;
   font-family:'Montserrat',sans-serif;
   font-weight:500;
   line-height:30px;
-  position:absolute;
-  top:360px;
-  margin-left:60px;
-  color:white;
+  position:relative;
+  margin-left:120px;
+  color:black;
   z-index:10000000;
+  display:block;
 
 }
 .main-title-text{
-  position:absolute;
-  top:200px;
-  color:white;
-  margin-left:60px;
+  margin-top:50px;
+  height:200px;
+  width:100%;
+  display:block;
+  position:relative;
+  float:left;
+  color:black;
+  margin-left:120px;
   font-size:64px;
   font-family:'Source Sans Pro',sans-serif;
   line-height:56px;
   z-index:10000000;
 }
 .img-set {
-  margin-left:40px;
+  height:800px;
 }
-.img-set>img {
-  width:400px;
 
+#img1{
+  background: url('assets/app-images/nol.png'),url('assets/iphone.png');
+  background-size: 70% auto,100% auto;
+  background-position:10% 0%,0% 0%;
+  background-repeat: no-repeat,no-repeat;
 }
+#img2{
+  background:url('assets/app-images/venue_list_web.jpg'),url('assets/iphone.png'),white;
+  background-size: 100%,auto,cover;
+  background-position:0% 0%;
+  background-repeat: no-repeat,no-repeat;
+}
+#img3{
+  background:url('assets/app-images/venue-details_web.jpg'),url('assets/iphone.png'),white;
+  background-size: 100%,auto,cover;
+  background-position:0% 0%;
+  background-repeat: no-repeat,no-repeat;
+}
+
 
 .popup-table > td {
   font-family:'Montserrat',sans-serif;

@@ -1,35 +1,12 @@
-<div ng-controller="nolWebController" style="height:80vw">
-    <div class="container-fluid header" style="background:white !important">
-        <div class="row">
-             <div class="col-lg-3"><div class="header-title" style="color:black !important">#NOL</div></div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <div class="header-menu">
+<div ng-controller="nolAppController" style="height:80vw">
+  <div ng-include="'templates/partials/header.html'">
 
-                        <ul>
-                            <li><a style="color:black !important"  ng-href="#/venues">Live Data</a></li>
-                                <li><a style="color:black !important" ng-href="#/app">App</a></li>
-                                 <li><a style="color:black !important" ng-href="#/about-us">About Us</a></li>
-                                <li><a style="color:black !important" ng-href="#/ambassador">Ambassador</a></li>
-                                <li><a style="color:black !important" ng-href="#/contact-us"> Contact</a> </li>
-
-                        </ul>
-
-                   </div>
-                </div>
-            </div>
-    </div>
+  </div>
 
      <div class="containter-fluid" style="height:auto; color:black; background:white !important;">
-        <div class="row">
-          <div class="bg-overlay">
-          </div>
-
-          <div class="bg-img-app">
-            <img src="assets/images/app-page-bg.jpg" width="100%"/>
-          </div>
+        <div class="row first-row">
           <div class="main-title-text">
-            We make
+              We make
           <br/>going out easy.
           </div>
           <div class="sub-title-text">
@@ -38,24 +15,18 @@
           </div>
         </div>
       </div>
-
-
-
-          <div style="position:absolute; display:block; left:40px;top:480px;width:270px;z-index:10000000000;padding:10px 10px 10px 10px">
-          <img style="margin-left:calc(50% - 125px); z-index:1000000000;" width="250px" src="assets/images/Android-App-Store.png"/>
+      <div style="position:absolute; display:block; right:120px;top:150px;width:270px;z-index:10000000000;padding:10px 10px 10px 10px">
+      <img style="margin-left:calc(50% - 125px); z-index:1000000000;" width="250px" src="assets/images/Android-App-Store.png"/>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4 img-set" id="img1">
+         </div>
+         <div class="col-lg-4 img-set" id="img2">
+         </div>
+          <div class="col-lg-4 img-set" id="img3">
           </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3 img-set">
-    <img src="assets/app-images/nol.png">
-   </div>
-   <div class="col-lg-3 img-set">
-     <img src="assets/app-images/venue_list_web.jpg">
-   </div>
-    <div class="col-lg-3 img-set">
-      <img src="assets/app-images/venue-details_web.jpg">
-    </div>
-  </div>
-</div>
+        </div>
+      </div>
 
 </div>
