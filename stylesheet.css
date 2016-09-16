@@ -165,13 +165,13 @@ body {
 }
 
 .header {
-    color:rgba(0,0,0,0.8);
-    background:white;
+    background:transparent;
     padding-left:0px !important;
     padding-right:0px !important;
     width:100vw;
     height: 90px;
     margin:0px auto;
+    margin-bottom:0px !important;
     /*border:2px solid white;*/
 }
 
@@ -182,6 +182,7 @@ body {
 
 
 .header-title {
+    color:inherit;
     text-align: left;
     font-family: 'Avenir Next LT Pro Bold' !important;
     width:100%;
@@ -210,11 +211,11 @@ body {
 
 a:link {
     text-decoration:none !important;
-    color:black !important;
+    color:inherit;
 }
  a:visited {
     text-decoration:none !important;
-    color:black !important;
+    color:inherit;
 }
 
 .menu-tab-list-hidden{float:right;}
@@ -247,7 +248,8 @@ li {
 
 }
 a:hover {
-    border-bottom:solid 2px rgba(0,0,0,1);
+    color:white !important;
+    border-bottom:solid 2px white;
 }
 
 #loader-container {
@@ -542,7 +544,7 @@ z-index:10000000;
   font-weight:500;
   line-height:30px;
   position:relative;
-  margin-left:120px;
+  margin-left:10%;
   color:black;
   z-index:10000000;
   display:block;
@@ -551,37 +553,38 @@ z-index:10000000;
 .main-title-text{
   margin-top:50px;
   height:200px;
-  width:100%;
+  width: 100vw;
   display:block;
   position:relative;
   float:left;
   color:black;
-  margin-left:120px;
+  padding-left: 10%;
+  /* margin-left:10%; */
   font-size:64px;
   font-family:'Source Sans Pro',sans-serif;
   line-height:56px;
   z-index:10000000;
 }
 .img-set {
-  height:800px;
+  height: 700px;
 }
 
 #img1{
-  background: url('assets/app-images/nol.png'),url('assets/iphone.png');
+  background: url('assets/app-images/nol.png');
   background-size: 70% auto,100% auto;
-  background-position:10% 0%,0% 0%;
+  background-position: 50% 0%;
   background-repeat: no-repeat,no-repeat;
 }
 #img2{
-  background:url('assets/app-images/venue_list_web.jpg'),url('assets/iphone.png'),white;
-  background-size: 100%,auto,cover;
-  background-position:0% 0%;
+  background:url('assets/app-images/venue-lis.png'),white;
+  background-size: 70%,auto,cover;
+  background-position: 50% 0%;
   background-repeat: no-repeat,no-repeat;
 }
 #img3{
-  background:url('assets/app-images/venue-details_web.jpg'),url('assets/iphone.png'),white;
-  background-size: 100%,auto,cover;
-  background-position:0% 0%;
+  background:url('assets/app-images/venue-details.png'),white;
+  background-size: 70%,auto,cover;
+  background-position: 50% 0%;
   background-repeat: no-repeat,no-repeat;
 }
 
@@ -802,87 +805,14 @@ z-index:10000000;
     width:inherit;
     padding-left:0.765vw;
   }
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    overflow:hidden;
-  }
 
-  .switch input {display:none;}
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .8s;
-    transition: .8s;
-  }
-
-  .slider:before {
-    font-size:14px;
-    font:sans-serif;
-    position: absolute;
-    content: "live";
-    height: 26px;
-    width: 60px;
-    left: 0px;
-    bottom: 4px;
-    text-align:center;
-    background-color: transparent;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  .slider:after {
-    font-size:14px;
-    font:sans-serif;
-    position: absolute;
-    content: "hist";
-    height: 26px;
-    width: 60px;
-    left: 60px;
-    bottom: 4px;
-    text-align:center;
-    background-color: transparent;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(-60px);
-  }
-  input:checked + .slider:after {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(-60px);
-  }
-
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
-  }
 }
 
 @media only screen and (min-width:767px) and (max-width: 1127px),(min-device-width: 768px) and (max-device-width: 1127px){
+
+    .header-title{
+      font-size: 56px;
+    }
 
     .info-bar {
         margin-left:calc(50vw - 370px);
@@ -987,16 +917,16 @@ z-index:10000000;
 }
 
 @media only screen and (max-width:767px),(max-device-width:767px){
-  .header{
-      height:150px;
+.header{
+      height: 120px;
   }
-  .header-title {
+.header-title {
       text-align: center;
       width:100%;
-      height:90px;
-      margin-top:20px;
+      height: 70px;
+      margin-top: 7px;
       padding-left: 0px !important;
-      font-size:64px;
+      font-size:56px;
       padding-right:0px !important;
       margin-left:auto;
       margin-right:auto;
@@ -1046,6 +976,13 @@ li {  width: auto;
       margin-left:0px;
       padding-left:5px;
       padding-right:5px;
+}
+.switch{
+position:relative;
+display:block;
+float: none;
+margin-left:auto;
+margin-right:auto;
 }
   .card-title {
       margin-top:14px;
@@ -1116,67 +1053,59 @@ li {  width: auto;
 
 
 @media only screen and (max-width:465px),(max-device-width:465px){
-  .header {
+.header {
       color:white;
-      background:black !important;
+      background:transparent;
       padding-left:0px !important;
       padding-right:0px !important;
       width:100vw;
-      height: 120px;
+      height: 55px;
       margin:0px auto;
       transition:height 1s ease-in-out;
       /*border:2px solid white;*/
   }
-
-  .fixed-on-top {
-    background:black;
-    position:fixed;
-    z-index:100000000;
-    width:100vw;
-    height: 120px;
-    transition: height 1s ease-in-out;
-  }
-
   .header-title {
-      text-align:center;
+      text-align: left;
       font-family: 'Avenir Next LT Pro Bold' !important;
-      width:100vw;
-      height:45px;
-      margin-top:10px;
-      margin-left: -15px !important;
+      color:rgba(0,0,0,0.8);
+      width: 34vw;
+      float: left;
+      margin: 0px 0px 0px 15px;
+      height: 55px;
+      /* margin-top: 0px; */
+      /* margin-left: -15px !important; */
       font-size: 48px;
       padding-left:0px !important;
       padding-right:0px !important;
   }
+  .menu-tab {
+    position: relative;
+    display:block;
+    height: 55px;
+    width: 24px;
+    padding-top: 12px;
+    font-size: 24px !important;
+    float: right;
+    margin-right: 15px;
+  }
+
+  .menu-tab a {
+    color:rgba(0,0,0,0.8) !important;
+    cursor:pointer;
+  }
+  .menu-tab a:hover{
+    border-bottom:none;
+  }
+
   .header-menu {
       float:center;
       width:100vw;
-      height: 50px;
-      margin-top:18px;
-      padding:3px 0px 3px 0px !important;
+      padding: 0px 0px 0px 0px !important;
+      height: auto;
       margin-right:0px!important;
       margin-left:0px !important;
       font-size:18px;
       font-family: 'Source Sans Pro', sans-serif;
-  }
-
-  .info-bar {
-      margin-left:2.8vw;
-      width:94.4vw;
-      background:rgba(255,255,255,1) !important;
-      color:black !important;
-      font-family:'Source Sans Pro', sans-serif;
-      font-size:24px;
-      padding-top:12px;
-      height:60px;
-      margin-bottom:15px;
-  }
-
-  .info-bar-fixed {
-    position:fixed;
-    top: 120px;
-    z-index:100000000;
-    transition:top 1s ease-in-out;
   }
 
 
@@ -1184,12 +1113,13 @@ li {  width: auto;
       width:100vw;
       margin: 0px auto;
       padding:0px 0px 0px 0px !important;
-      /*height:24px !important;*/
+      height: auto !important;
       float:left !important;
       color:white;
   }
 
   li {
+      color:rgba(0,0,0,0.8);
       width:100vw;
       text-align:center;
       text-decoration:none;
@@ -1199,43 +1129,31 @@ li {  width: auto;
       text-decoration:none;
   }
 
-  .menu-tab {
-    position: absolute;
-    /* float: left; */
-    display:block;
-    height: 24px;
-    width: 24px;
-    font-size: 24px !important;
-    margin-left: auto;
-    margin-right: auto;
-    /* margin-bottom:10px; */
-    text-align:center;
-    color:white;
-    left: 0px;
-    right: 0px;
-  }
 
-  .menu-tab a{
-    display: block;
-    width: inherit;
-    height: inherit;
-    text-decoration:none;
-    color:white;
-  }
+
+
   .menu-tab-list-hidden {
     display:block;
     height: 0px;
-    margin-top: 40px;
+    margin-top: 0px;
     transition: height 1s ease-in-out;
     overflow: hidden;
   }
   .menu-tab-list {
     display:block;
     width: 100%;
-    height:140px;
-    margin-top: 40px;
+    height: 192px;
+    margin-top: 0px;
     text-align: center;
     /* transform: scale(1,0); */
+  }
+
+  .switch{
+position:relative;
+display:block;
+float: none;
+margin-left:auto;
+margin-right:auto;
   }
 
   .row1 {
@@ -1355,4 +1273,5 @@ li {  width: auto;
           width: 100%;
           background-size: cover;
           object-fit: cover;
+    }
     }

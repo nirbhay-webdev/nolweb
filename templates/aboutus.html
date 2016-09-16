@@ -1,31 +1,13 @@
 <div ng-controller="nolWebController" style="height:80vw">
-        <div class="container-fluid header" style="background:rgba(38,173,228,1)!important">
-            <div class="row">
-             <div class="col-lg-3"><div class="header-title"><a ng-href="#/venues">#NOL</a></div></div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <div class="header-menu"> 
-                 
-                        <ul>
-                                <li><a ng-href="#/venues">Live Data</a></li>
-                                <li><a ng-href="#/app">App</a></li>
-                                <li><a ng-href="#/about-us">About Us</a></li>
-                                <li><a ng-href="#/ambassador">Ambassador</a></li>
-                               
-                                <li><a ng-href="#/contact-us"> Contact</a> </li>
-                         
-                        </ul>
-                   
-                   </div> 
-                </div>
-            </div>
+    <div ng-include="'templates/partials/header.html'" style="background:rgba(38,173,228,1)!important;color:white !important">
+
     </div>
     <div class="containter-fluid" style="height:100%;color:white; background:rgba(38,173,228,1)!important">
-        <div class="row"><center><span style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important;">About Us</span></center></div>
+        <div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs 12" style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important; text-align:center">About Us</div></div>
         <div class="row">
             <div class="col-lg-3"></div>
-            
+
         </div>
     </div>
-   
+
 </div>
