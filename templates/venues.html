@@ -1,66 +1,33 @@
 <div id="ctrl" class="bob" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
 
-<div class="splash-screen-outer" ng-hide="switchToVenuesPage">
-  <div ng-include="'templates/home.html'" id="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" class="splash-screen" ></div>
-</div>
+  <div class="splash-screen-outer" ng-hide="switchToVenuesPage">
+    <div ng-include="'templates/home.html'" id="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" class="splash-screen" ></div>
+  </div>
+  <div class="container-fluid row header" ng-include="'templates/partials/header.html'">
+  </div>
+  <div class="container-fluid row" ng-hide="Data.length == 0">
+      <div class="col-lg-4" ng-class="{'card-left':$even,'card-right':$odd}"ng-style="{'background':'url({{element.imgUrl}})','background-size':'100% 77%','background-position':'0px 0px','background-repeat':'no-repeat'}" ng-repeat="element in Data" ng-click="showPopup(element)">
 
-
-<div class="venue-container">
-
-    <div class="popup-background" ng-include="'templates/partials/popup.html'" ng-show="popupBtnClicked" ng-click="closePopUp()"></div>
-      <div ng-include="'templates/partials/header.html'">
-      </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <label class="switch" >
-                <input type="checkbox" ng-model="whichData" ng-click="showData(whichData)">
-                <div class="slider">Online  Offline</div>
-            </label>
-
-          </div>
-                  </div>
-      </div>
-
-
-    <div id="hist-data-container" class="container-fluid container-margin">
-      <div class="loader" ng-show="showLoader">
-
-      </div>
-      <div class="row">
-        <div class="col-lg-12" ng-show=" Data.length == 0">
-            <span class="row" style="font-size:24px; display:block;vertical-align:middle;width:100%; text-align:center; margin-left:auto;margin-right:auto;height:100%;padding-top:15%; font-family:'Montserrat',sans-serif;">  We will be live between 7PM and 12PM everyday.<br />
-              You can switch over to see our daily projections</span>
+        <div class="card-title">{{element.venue}}</div>
+        <div class="mini-card-box">
+            <div class="mini-cards mini-card-people">
+                <span class="mini-cards-tag">PEOPLE</span><br>
+                <span class="mini-cards-value">{{element.people}}</span>
+            </div>
+            <div class="mini-cards mini-card-males">
+                <span class="mini-cards-tag"> MALES</span><br>
+                <span class="mini-cards-value">{{element.male}}</span>
+            </div>
+            <div class="mini-cards mini-card-female">
+                <span class="mini-cards-tag"> FEMALES</span><br>
+                <span class="mini-cards-value">{{element.female}}</span>
+            </div>
+            <div class="mini-cards mini-card-fullness">
+                <span class="mini-cards-tag">FULLNESS</span><br>
+                <span class="mini-cards-value">{{element.fullness}}</span>
+            </div>
         </div>
-      </div>
-        <div class="row1" ng-hide="Data.length == 0">
-            <div class="card" ng-repeat="element in Data " ng-click="showPopup(element)">
-              <div class="img-overlay">
-              </div>
-                <div class="bg-img">
-                    <img src="assets/images/{{element.imgUrl}}.jpg" ng-click="showPopup(element)"/>
-                    <div class="grad"></div>
-                </div>
-                <div class="card-title">{{element.venue}}</div>
-                <div class="mini-card-box">
-                    <div class="mini-cards mini-card-people">
-                        <span class="mini-cards-tag">PEOPLE</span><br>
-                        <span class="mini-cards-value">{{element.people}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-males">
-                        <span class="mini-cards-tag"> MALES</span><br>
-                        <span class="mini-cards-value">{{element.male}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-female">
-                        <span class="mini-cards-tag"> FEMALES</span><br>
-                        <span class="mini-cards-value">{{element.female}}</span>
-                    </div>
-                    <div class="mini-cards mini-card-fullness">
-                        <span class="mini-cards-tag">FULLNESS</span><br>
-                        <span class="mini-cards-value">{{element.fullness}}</span>
-                    </div>
-                </div>
-                <div class="three-text-box">
+        <div class="three-text-box">
                     <div class="text-box" style="width:30%">
                         <span class="text-box-tag">VIBE</span>
                         <span class="text-box-value" >{{element.vibe}}</span>
@@ -72,8 +39,6 @@
                         <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+      </div>
+  </div>
 </div>

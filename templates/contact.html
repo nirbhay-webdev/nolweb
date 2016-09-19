@@ -1,41 +1,46 @@
-<div ng-controller="nolContactController"  style="height:90vh">
-<div ng-include="'templates/partials/header.html'" style="background:rgba(77,188,233,1)!important;color:white !important;">
+<style>
+.page-title{
+  text-align:center;
+}
+</style>
+
+<div ng-controller="nolContactController">
+<div class="container-fluid row header"ng-include="'templates/partials/header.html'"style=" color:white; background:rgba(77,188,233,1)!important">
 </div>
-<div class="containter-fluid" style="height:100%; color:white; background:rgba(77,188,233,1)!important">
-        <div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:white !important; font-family:'Montserrat', sans-serif !important; font-size:36px !important; text-align:center">Contact Us</div></div>
-        <div class="row" style="margin-top:20px">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="border-right:1px solid white; height:400px; font-family:'Montserrat', sans-serif;">
+<div class="containter-fluid row" style="height:100vh; color:white; background:rgba(77,188,233,1)!important">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:white !important;font-size:36px !important; text-align:center">Contact Us</div>
+        <div class="row" >
+            <div class=" col-lg-offset-2 col-lg-4 col-md-offset-2 col-md-4 col-sm-offset-2 col-sm-4 col-xs-offset-0 col-xs-12" style="border-right:1px solid white; font-family:'Montserrat', sans-serif;">
                 <center> <h3>For Party Hoppers</h3> </center><br>
                 <span style="display:block;text-align:center;margin-bottom:10px;">So you seems to enjoy #NOL . We would love to hear from you.</span><br>
                 <form class="form-horizontal" style="margin-left:15%;" action="//github.us14.list-manage.com/subscribe/post?u=e5a2eb5745dab5fd9008b3309&amp;id=f7bcf92b27" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <div class="form-group">
 
-                        <div class="col-sm-10">
+                        <div class=" col-xs-10 col-sm-10">
                         <input type="text" class="form-control" name ="NAME"  id="name" placeholder="Name" ng-model="msgRecieved.name">
                         </div>
                     </div>
                     <div class="form-group">
 
-                        <div class="col-sm-10">
+                        <div class="col-xs-10 col-sm-10">
                         <input type="email" class="form-control" name="EMAIL" id="email" placeholder="Email" ng-model="msgRecieved.email">
                         </div>
                     </div>
                     <div class="form-group">
 
-                        <div class="col-sm-10">
+                        <div class=" col-xs-10 col-sm-10">
                         <input type="text" style="height:120px;" name="MESSAGE" class="form-control" id="message" placeholder="Message" ng-model="msgRecieved.msg">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10" style="margin-left:30%">
+                        <div class="col-xs-10 col-sm-offset-2 col-sm-10" style="margin-left:30%">
                         <button type="submit" class="btn btn-default" ng-click="requestedContact()">Send</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="border-left:1px solid white; height:400px; font-family:'Montserrat', sans-serif;">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="border-left:1px solid white;font-family:'Montserrat', sans-serif;">
                 <center> <h3>For Pubs</h3> </center><br>
                 <span style="display:block;text-align:center;margin-bottom:10px;">For any media related enquiries please write to us at :
                     <br>
@@ -43,23 +48,23 @@
                 <form class="form-horizontal" style="margin-left:15%;" action="//github.us14.list-manage.com/subscribe/post?u=e5a2eb5745dab5fd9008b3309&amp;id=4edf9db465" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <div class="form-group">
 
-                        <div class="col-sm-10">
+                        <div class=" col-xs-10 col-sm-10">
                         <input type="text" class="form-control" name ="NAME"  id="name" placeholder="Name">
                         </div>
                     </div>
                     <div class="form-group">
 
-                        <div class="col-sm-10">
+                        <div class=" col-xs-10 col-sm-10">
                         <input type="email" class="form-control" name="EMAIL" id="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-10">
+                        <div class=" col-xs-10 col-sm-10">
                         <input type="text" style="height:120px;" name="MESSAGE" class="form-control" id="message" placeholder="Message">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10" style="margin-left:30%">
+                        <div class=" col-xs-10 col-sm-offset-2 col-sm-10" style="margin-left:30%">
                         <button type="submit" class="btn btn-default">Send</button>
                         </div>
                     </div>

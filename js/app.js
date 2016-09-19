@@ -10,20 +10,21 @@ app.config(['$locationProvider','$routeProvider',function config($locationProvid
                     }).when('/venues',{
                     templateUrl: 'templates/venues.html',
                     controller:'nolWebController'
-                    }).when('/about-us',{
-                        templateUrl:'templates/aboutus.html'
-                    }).when('/ambassador',{
-                    templateUrl:'templates/ambassador.html',
-                    controller:'nolAmbassadorController'}
-                    ).when('/contact-us',{
-                    templateUrl:'templates/contact.html',
-                    controller:'nolContactController'
-                    }).when('/app',{
-                    templateUrl:'templates/app.html'
-                    }).when('/new-home',{
-                    templateUrl:'templates/new_home.html',
-                    controller:'newHomeController'
-                    }).otherwise('/');
+                  });
+                    // .when('/about-us',{
+                    //     templateUrl:'templates/aboutus.html'
+                    // }).when('/ambassador',{
+                    // templateUrl:'templates/ambassador.html',
+                    // controller:'nolAmbassadorController'}
+                    // ).when('/contact-us',{
+                    // templateUrl:'templates/contact.html',
+                    // controller:'nolContactController'
+                    // }).when('/app',{
+                    // templateUrl:'templates/app.html'
+                    // }).when('/new-home',{
+                    // templateUrl:'templates/new_home.html',
+                    // controller:'newHomeController'
+                    // }).otherwise('/');
 
     }]);
 
@@ -65,8 +66,6 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 //On Page Load Variable Initiazlizer Function Specification
 
     $scope.variableInitializerOnPageLoad = function() {
-            $scope.showLoaderNew = true;
-            $timeout(function(){$scope.showLoaderNew=false;},2000);
             $scope.showLiveDataSection = false;
             $scope.showHistoricalDataSection=false;
             $scope.Data = [];
@@ -93,7 +92,7 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
 
             function afterRollingUpSplashScreen(event){
 
-              $('.venue-container').delay(1500).css('overflow-y','scroll');
+              $('#ctrl').delay(500).css('overflow-y','scroll');
               $scope.switchToVenuesPage = true;
               $scope.$apply();
 

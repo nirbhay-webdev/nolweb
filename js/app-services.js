@@ -38,7 +38,7 @@ app.service('dataService',['$q','$http',function($q,$http){
                 data[i] ={};
                 data[i].venue = response[i].venue.display_name;
                 data[i].venueName = response[i].venue.display_name;
-                data[i].imgUrl = imageList[response[i].venue.id];
+                data[i].imgUrl = 'assets/images/'+imageList[response[i].venue.id]+'.jpg';
                 data[i].people = response[i].count_total;
                 data[i].female = response[i].count_females;
                 data[i].male = data[i].people - data[i].female;

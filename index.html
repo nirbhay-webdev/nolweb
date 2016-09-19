@@ -7,7 +7,7 @@
         <script type="text/javascript">
         function preloader(){
           if(window.location.hash == '#/' || window.location.hash == '#/venues' ){
-          $('.loader-new').css('display','block');
+          // $('.loader-new').css('display','block');
             $('#view').css('display','none');
            var image = new Image();
           var image1 = new Image();
@@ -73,11 +73,7 @@
         <title>NOL</title>
     </head>
     <body onload="preloader()">
-      <div class="loader-new" >
-          
-      </div>
       <div id="view" ng-view ng-class="{'body-overflow':popupBtnClicked}" ng-cloak>
-
       </div>
       <script src="js/jquery.min.js"></script>
       <script src="js/image-list.js"></script>
