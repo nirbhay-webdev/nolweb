@@ -2,9 +2,9 @@ var app = angular.module('nolWeb-Services',[]);
 
 app.service('dataService',['$q','$http',function($q,$http){
 
-    this.getData = function(dataType) {
+    this.getData = function() {
 
-            var Url = 'http://api.nightoutloud.com/api/v1/venue_state_slots/?'+dataType;
+            var Url = 'http://dev-api.nightoutloud.com/api/v1/venues/?limit=34';
             var result =[];
 
             return $q(function(resolve,reject){
@@ -15,7 +15,7 @@ app.service('dataService',['$q','$http',function($q,$http){
                         url: Url,
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': 'Token 58c9a5dbe2d373e10d5818494b9eaac695283311',
+                            // 'Authorization': 'Token 58c9a5dbe2d373e10d5818494b9eaac695283311',
                             // 'Origin':'http://localhost:8888'
                         }
                         }).then(function(response){
@@ -33,21 +33,41 @@ app.service('dataService',['$q','$http',function($q,$http){
             placeVibe = ['Chill','Upbeat','Dancing'];
             var data = [];
             var length = response.length;
-
+            var counter = 0;
             for (var i=0;i<length;i++){
-                data[i] ={};
-                data[i].venue = response[i].venue.display_name;
-                data[i].venueName = response[i].venue.display_name;
-                data[i].imgUrl = 'assets/images/'+imageList[response[i].venue.id]+'.jpg';
-                data[i].people = response[i].count_total;
-                data[i].female = response[i].count_females;
-                data[i].male = data[i].people - data[i].female;
-                data[i].genre = musicType[response[i].music_type];
-                data[i].type= musicSource[response[i].music_source];
-                data[i].vibe = placeVibe[response[i].vibe];
-                data[i].fullness = response[i].fullness;
-                data[i].date = response[i].date;
-                data[i].image = response[i].image;
+                if(response[i].venue_data != null){
+                data[counter] ={};
+                data[counter].venue = response[i].display_name;
+                data[counter].venueName = response[i].display_name;
+                data[counter].imgUrl = 'assets/images/'+imageList[response[i].id]+'.jpg';
+                data[counter].people = response[i].venue_data.count_total;
+                data[counter].female = response[i].venue_data.count_females;
+                data[counter].male = data[counter].people - data[counter].female;
+                data[counter].genre = response[i].venue_data.music_type;
+                data[counter].type= response[i].venue_data.music_source;
+                data[counter].vibe = response[i].venue_data.vibe;
+                data[counter].fullness = response[i].venue_data.fullness;
+                data[counter].date = response[i].venue_data.date;
+                data[counter].slot = response[i].venue_data.slot;
+                data[counter].image = response[i].image;
+                data[counter].isCurrent = response[i].venue_data.is_current;
+                data[counter].stat = null;
+
+                if(data[counter].isCurrent === false){
+                  data[counter].stat = 'Based on Historical';
+                }
+                else if (data[counter].isCurrent === true){
+                  var temp = new Date();
+                  var hour = temp.getHours();
+                  if(hour > data[counter].slot){
+                    data[counter].stat = 'Updated'+ (hour - data[counter].slot) + 'Hrs ago';
+                  }
+                  else if(hour == data[counter].slot){
+                    data[counter].stat = 'Live';
+                  }
+                }
+                counter = counter +1;
+              }
             }
 
             return data;

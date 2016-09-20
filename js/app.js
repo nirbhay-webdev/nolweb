@@ -69,13 +69,10 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             $scope.showLiveDataSection = false;
             $scope.showHistoricalDataSection=false;
             $scope.Data = [];
-            $scope.liveDataStorage = [];
-            $scope.historicalDataStorage = [];
             $scope.rollUpSplashScreen=false;
             $scope.switchToVenuesPage=false;
             $scope.whichData=false;
-            dataService.getData('data_type=current').then(doWhenLiveDataRecieved,doWhenError);
-            dataService.getData('data_type=historical').then(doWhenHistoricalDataRecieved,doWhenError);
+            dataService.getData().then(doWhenLiveDataRecieved,doWhenError);
 
             window.addEventListener('scroll',splashScrollScreen);
 
@@ -99,9 +96,10 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
             }
 
             function doWhenLiveDataRecieved(response){
-                $scope.showLiveDataSection=false;
-                $scope.liveDataStorage = response;
-                var checkForLiveDataSize = $scope.liveDataStorage.length > 0;
+                $scope.showLiveDataSection=true;
+                $scope.Data = response;
+                console.log(response);
+                var checkForLiveDataSize = $scope.Data.length > 0;
                 if(checkForLiveDataSize){
                         console.log('triggering');
                         $scope.showLiveDataSection=true;
@@ -110,33 +108,12 @@ app.controller('nolWebController',['$scope','$rootScope','$timeout','dataService
                     }
             }
 
-            function doWhenHistoricalDataRecieved (response){
-                 $scope.historicalDataStorage = response;
-                 $scope.showHistoricalDataSection = true;
-                 $scope.Data = response;
-                 console.log($scope.historicalDataStorage);
 
-            }
             function doWhenError (error){
                 console.log('data not available');
             }
 
-            function doWhenUserScrolls(event){
-                  var temp = $('#hist-data').offset();
-                  if(temp.top <= 170){
-                    console.log(temp);
-                    var opa =(temp.top - 110)/50;
-                    console.log(opa);
-                    $('.info-bar').first().css("opacity",opa);
-                    if(temp.top <= 110){
-                        $('#info-bar-inner').addClass('info-bar-fixed');
-                      console.log('not working');
-                    }
-                    else if(temp.top >= 110){
-                        $('#info-bar-inner').removeClass('info-bar-fixed');
-                    }
-                  }
-            }
+
             $scope.showData=function(whichData){
                   console.log(whichData);
                   if(whichData){
