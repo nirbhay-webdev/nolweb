@@ -1,13 +1,13 @@
-<div id="ctrl" class="bob" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
+<div id="ctrl" ng-controller="nolWebController" ng-init="variableInitializerOnPageLoad()">
 
   <div class="splash-screen-outer" ng-hide="switchToVenuesPage">
     <div ng-include="'templates/home.html'" id="splash-screen" ng-class="{'roll-up-splash-screen':rollUpSplashScreen}" class="splash-screen" ></div>
   </div>
-  <div class="container-fluid row header" ng-include="'templates/partials/header.html'">
+  <div class="container-fluid row col-xs-12-new col-sm-12 col-md-12 col-lg-12 header">
+          <div class="header-title">#NOL</div>
   </div>
-  <div class="container-fluid row" ng-hide="Data.length == 0">
-      <div class="col-lg-4" ng-class="{'card-left':$even,'card-right':$odd}"ng-style="{'background':'url({{element.imgUrl}})','background-size':'100% 77%','background-position':'0px 0px','background-repeat':'no-repeat'}" ng-repeat="element in Data" ng-click="showPopup(element)">
-
+  <div class="container-fluid row venues-grid" ng-hide="Data.length == 0">
+        <div class="card" ng-style="{'background':'url({{element.imgUrl}})','background-size':'100% 77%','background-position':'0px 0px','background-repeat':'no-repeat'}" ng-repeat="element in Data" ng-click="showPopup(element)">
         <div class="card-title">{{element.venue}}</div>
         <div class="mini-card-box">
             <div class="mini-cards mini-card-people">
@@ -28,17 +28,17 @@
             </div>
         </div>
         <div class="three-text-box">
-                    <div class="text-box" style="width:30%">
-                        <span class="text-box-tag">VIBE</span>
-                        <span class="text-box-value" >{{element.vibe}}</span>
-                    </div>
-                    <div class="text-box" style="width:33%">
-                        <span class="text-box-tag">MUSIC GENRE</span><span class="text-box-value" >{{element.genre}}</span>
-                    </div>
-                    <div class="text-box" style="width:33%">
-                        <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
-                    </div>
-                </div>
+          <div class="text-box" style="width:30%">
+              <span class="text-box-tag">VIBE</span>
+              <span class="text-box-value" >{{element.vibe}}</span>
+          </div>
+          <div class="text-box" style="width:33%">
+              <span class="text-box-tag">MUSIC GENRE</span><span class="text-box-value" >{{element.genre}}</span>
+          </div>
+          <div class="text-box" style="width:33%">
+            <span class="text-box-tag" >MUSIC TYPE</span><span class="text-box-value">{{element.type}}</span>
+          </div>
+        </div>
       </div>
   </div>
 </div>
